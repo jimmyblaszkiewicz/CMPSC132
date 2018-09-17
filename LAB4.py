@@ -72,6 +72,7 @@ def decrypt(message, key):
     """
 
     # --- YOU CODE STARTS HERE
+    # adding this test comment
     # make sure that message and key are the right type ie str and int respectively
     if type(message) != str or type(key) != int:
         return ('Invalid input')
