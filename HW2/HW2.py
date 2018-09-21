@@ -31,7 +31,7 @@ def findNextOpr(txt):
     # set mindex to length of txt because no valid index will be greater than that 
     mindex = len(txt)
 
-    for i in range(len(operators)-1):
+    for i in range(len(operators)):
         nextOper = txt.find(operators[i])
 
         # if the operator is not in the text, continue. sending it to the elif
@@ -113,20 +113,26 @@ def getNextNumber(expr, pos):
 
     
     # find next number before the next operator
-    # split int noSpaces to feed into isNumber
+    # strip into noSpaces to feed into isNumber
     noSpaces = remaining[:nextOprPos].split()
     nextNum = None
 
-    # walk throughnoSpaces to find first item that passes isNumber()
+    # walk through noSpaces to find first item that passes isNumber()
     for i in noSpaces:
         if isNumber(i):
             nextNum = float(i)
+
 
     # add position back on to nextOprPos
     if nextOprPos != None:
         nextOprPos += pos
 
-    return nextNum, nextOpr, nextOprPos
+    # if there is more than 1 number in front of the next operator
+    # set nextOprPos = -1 so calculator() can catch error
+    if len(noSpaces) > 1:
+        nextOprPos = -1
+
+    return (nextNum, nextOpr, nextOprPos)
 
 
 
@@ -201,7 +207,69 @@ def calculator(expr):
     
     #Calculation starts here, get next number-operator and perform case analysis. Compute values using exeOpr 
     while True:
-    # --- YOU CODE STARTS HERE
+        # --- YOU CODE STARTS HERE
+        # get newNumber, newOpr, oprPos
+        
+        newNumber, newOpr, oprPos = getNextNumber(expr, pos)
+        if expr.strip()[-1] in '+-/*':
+            return 'error: line ends in operator'
+
+        # no operator error detected in getNextNumber, handled here
+        elif oprPos == -1:
+            return 'error: no operator between numbers'
+        # if no more numbers, no more operators, => at the end of sequence
+        # if mode is add just return addResult (multiplication already handled)
+        elif newNumber is None and newOpr is None and mode == 'add':
+            return exeOpr(addResult, addLastOpr, mulResult)
+
+        # elif mode is mul then add/subtract addResult and return
+        elif newNumber is None and newOpr is None and mode == 'mul':
+            return exeOpr(mulResult, addLastOpr, addResult)
+
+        # two operators with no number between raises error message
+        elif newNumber is None and newOpr is not None:
+            return 'error: too many operators'
+
+        # there is a new number, but no more operators, so just finish
+        # whatever mode is
+        elif newOpr is None and mode == 'add':
+            return exeOpr(addResult, opr, newNumber)
+        elif newOpr is None and mode == 'mul':
+            return exeOpr(addResult, addLastOpr, exeOpr(mulResult, opr, newNumber))
+        
+        # if operator matches mode, evaluate previous calculation
+        elif (newOpr == '+' or newOpr == '-') and mode == 'add':
+            addResult = exeOpr(addResult, opr, newNumber)
+        elif (newOpr == '*' or newOpr == '/') and mode == 'mul':
+            mulResult = exeOpr(mulResult, opr, newNumber)
+
+
+        # if operator does not match mode...
+        
+        elif (newOpr == '+' or newOpr == '-') and mode == 'mul':
+            # change mode to add
+            mode = 'add'
+            # first calculate multiplication with nested exeOpr
+            # then addLastOpr the result of mul with addResult
+            addResult = exeOpr(exeOpr(mulResult, opr, newNumber), addLastOpr, addResult) 
+            addLastOpr = newOpr
+        elif (newOpr == '*' or newOpr == '/') and mode == 'add':
+            # change mode to mul
+            mode = 'mul'
+            # set addLastOpr to opr
+            addLastOpr = opr
+            mulResult = newNumber
+            
+
+
+        # update pos and opr with current values
+        if oprPos is not None:
+            pos = oprPos+1
+            opr = newOpr
+        
+
+
+
 
 
 
