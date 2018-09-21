@@ -25,6 +25,24 @@ def findNextOpr(txt):
 
     # --- YOU CODE STARTS HERE
 
+    # list of operators and minimum index variable initialization
+    operators = ['+', '-', '/', '*']
+
+    # set mindex to length of txt because no valid index will be greater than that 
+    mindex = len(txt)
+
+    for i in range(len(operators)-1):
+        nextOper = txt.find(operators[o])
+
+        # if the operator is not in the text, continue. sending it to the elif
+        # would result in a -1 mindex which would be wrong
+        if nextOper == -1:
+            continue
+        elif nextOper < mindex:
+            mindex = nextOper
+
+    # if no operators found, ret -1, otherwise ret mindex
+    return -1 if mindex == len(txt) else mindex
 
     # ---  CODE ENDS HERE
 
@@ -48,7 +66,13 @@ def isNumber(txt):
         return False
 
     # --- YOU CODE STARTS HERE
+    # try casting txt to float
+    try:float(txt)
+        return True
 
+    # if it doesn't work, txt is not a number
+    except ValueError as e:
+        return False
 
     # ---  CODE ENDS HERE
 
@@ -73,6 +97,30 @@ def getNextNumber(expr, pos):
     if len(expr)==0 or not isinstance(expr, str) or pos<0 or pos>=len(expr) or not isinstance(pos, int):
         return None, None, "type error: getNextNumber"
     # --- YOU CODE STARTS HERE
+    
+    # start with getting remaining = expr[pos:] i.e. the remaining text in the string
+    # from there split on spaces
+    # walk through that ^ array and find the first instance of something that passes isNumber()
+    # then get the next operator position and use that to return its actual value from remaining[result of findNextOpr()]
+    
+    # set remaining txt variable
+    remaining = expr[pos:]
+
+    nextOpr = None
+    nextOprPos = None
+    if findNextOpr(remaining) != -1
+        nextOprPos = findNextOpr(remaining)
+        nextOpr = remaining[nextOprPos]
+    
+    # find next number before the next operator
+    pieces = remaining[:nextOprPos].split()
+    nextNum = None
+    # walk through pieces to find first item that passes isNumber()
+    for i in pieces:
+        if isNumber(i):
+            nextNum = float(i)
+
+
 
 
     # ---  CODE ENDS HERE
@@ -120,7 +168,7 @@ def calculator(expr):
     if len(expr)<=0 or not isinstance(expr,str): #Line A     
         return "input error line A: calculator"
     
-    # Concatenate '0' at he beginning of the expression if it starts with a negative number to get '-' when calling getNextNumber
+    # Concatenate '0' at the beginning of the expression if it starts with a negative number to get '-' when calling getNextNumber
     # "-2.0 + 3 * 4.0 ” becomes "0-2.0 + 3 * 4.0 ”. 
     expr=expr.strip()
     if expr[0]=="-":
@@ -143,9 +191,10 @@ def calculator(expr):
     pos=oprPos+1                #the new current position
     opr=newOpr                  #the new current operator
     
-    #Calculation starts here, get next number-operator and perform case analysis. Conpute values using exeOpr 
+    #Calculation starts here, get next number-operator and perform case analysis. Compute values using exeOpr 
     while True:
     # --- YOU CODE STARTS HERE
+
 
 
 
