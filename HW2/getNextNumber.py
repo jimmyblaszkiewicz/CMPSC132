@@ -1,13 +1,3 @@
-#HW 2
-#Due Date: 09/21/2018, 11:59PM
-########################################
-#                                      
-# Name: James Blaszkiewicz
-# Collaboration Statement: I worked on this HW by myself using only the class materials.             
-#
-########################################
-
-
 def findNextOpr(txt):
     """
         Takes a string and returns -1 if there is no operator in txt, otherwise returns 
@@ -76,7 +66,6 @@ def isNumber(txt):
         return False
 
     # ---  CODE ENDS HERE
-
 def getNextNumber(expr, pos):
     """
         expr is a given arithmetic formula of type string
@@ -101,24 +90,22 @@ def getNextNumber(expr, pos):
     
     # set remaining txt variable
     remaining = expr[pos:]
+
     # initialize to None so that if they are not changed, they return correctly
     nextOpr = None
     nextOprPos = None
     
     # if it found an operator, set it to nextOprPos, set actual character to nextOpr
-
     if findNextOpr(remaining) != -1:
         nextOprPos = findNextOpr(remaining)
         nextOpr = remaining[nextOprPos]
-
     
     # find next number before the next operator
-    # split int noSpaces to feed into isNumber
-    noSpaces = remaining[:nextOprPos].split()
+    # split into pieces to feed into isNumber
+    pieces = remaining[:nextOprPos].split()
     nextNum = None
-
-    # walk throughnoSpaces to find first item that passes isNumber()
-    for i in noSpaces:
+    # walk through pieces to find first item that passes isNumber()
+    for i in pieces:
         if isNumber(i):
             nextNum = float(i)
 
@@ -127,83 +114,4 @@ def getNextNumber(expr, pos):
         nextOprPos += pos
 
     return nextNum, nextOpr, nextOprPos
-
-
-
-
-    # ---  CODE ENDS HERE
-
-def exeOpr(num1, opr, num2):
-
-    #This function is just an utility function for calculator(expr). It is skipping type check
-
-    if opr=="+":
-        return num1+num2
-    elif opr=="-":
-        return num1-num2
-    elif opr=="*":
-        return num1*num2
-    elif opr=="/":
-        return num1/num2
-    else:
-        return "error in exeOpr"
-
-    
-def calculator(expr):
-    """
-        Takes a string and returns the calculated result if the arithmethic expression is value,
-        and error message otherwise 
-
-        >>> calculator("   -4 +3 -2")
-        -3.0
-        >>> calculator("-4 +3 -2 / 2")
-        -2.0
-        >>> calculator("-4 +3   - 8 / 2")
-        -5.0
-        >>> calculator("   -4 +    3   - 8 / 2")
-        -5.0
-        >>> calculator("23 / 12 - 223 + 5.25 * 4 * 3423")
-        71661.91666666667
-        >>> calculator("2 - 3*4")
-        -10.0
-        >>> calculator("4++ 3 +2")
-        'error message'
-        >>> calculator("4 3 +2")
-        'input error line B: calculator'
-    """
-
-
-    if len(expr)<=0 or not isinstance(expr,str): #Line A     
-        return "input error line A: calculator"
-    
-    # Concatenate '0' at the beginning of the expression if it starts with a negative number to get '-' when calling getNextNumber
-    # "-2.0 + 3 * 4.0 ” becomes "0-2.0 + 3 * 4.0 ”. 
-    expr=expr.strip()
-    if expr[0]=="-":
-        expr = "0 " + expr
-    newNumber, newOpr, oprPos = getNextNumber(expr, 0)   
-
-    # Initialization. Holding two modes for operator precedence: "addition" and "multiplication"
-    if newNumber is None: #Line B
-        return "input error line B: calculator"
-    elif newOpr is None:
-        return newNumber
-    elif newOpr=="+" or newOpr=="-":
-        mode="add"
-        addResult=newNumber     #value so far in the addition mode     
-    elif newOpr=="*" or newOpr=="/":
-        mode="mul"
-        addResult=0
-        mulResult=newNumber     #value so far in the mulplication mode
-        addLastOpr = "+"
-    pos=oprPos+1                #the new current position
-    opr=newOpr                  #the new current operator
-    
-    #Calculation starts here, get next number-operator and perform case analysis. Compute values using exeOpr 
-    while True:
-    # --- YOU CODE STARTS HERE
-
-
-
-
     # ---  CODE ENDS HERE
