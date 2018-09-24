@@ -2,8 +2,8 @@
 #Due Date: 09/30/2018, 11:59PM
 ########################################
 #                                      
-# Name:
-# Collaboration Statement:             
+# Name: James Blaszkiewicz
+# Collaboration Statement: I worked on this program by myself using only the class materials             
 #  
 ########################################
 
