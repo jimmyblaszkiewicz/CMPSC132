@@ -65,6 +65,7 @@ class EncryptTestCase(unittest.TestCase):
         # line in calculator has ambiguous notation
         # evaluates as ((4*2)/2)*6
         self.assertEqual(round(calculator('4*2/2*6'), 4), 24)
+    
 
     def test_error_lineA(self):
         self.assertEqual(calculator(""), 'input error line A: calculator')
