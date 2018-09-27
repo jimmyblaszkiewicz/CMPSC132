@@ -65,6 +65,8 @@ class Vector:
         for i in range(len(self.vector)):
             newVector.vector.append(self.vector[i] + other.vector[i])
         
+        # returns a different vector than original first vector
+        # like + * - operators usually function
         return newVector
 
     def __sub__(self, other):
@@ -92,9 +94,11 @@ class Vector:
                 newVector.vector.append(self.vector[i]*other)
             return newVector
 
-        # if 
+        # if the first vector has fewer coords, set length to first vec length
         elif len(self.vector) <= len(other.vector):
             length = len(self.vector)
+
+        # otherwise take other vectors length
         else:
             length = len(other.vector)
 
