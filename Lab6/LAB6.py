@@ -38,11 +38,29 @@ class Vector:
     def __init__(self, vector):
         self.vector = vector
 
+
     #To compare and determine if both Vector objects are equal
     #Include this in your final submission
     def __eq__(self, other):
         return self.vector==other.vector
 
     # --- Your code starts here
-       
+    def __str__(self):
+        return "Fuck"
+
+    def __repr__(self):
+        return "Shit"
+        #return "Vector({})".format(self.vector)
+
+    def __add__(self, other):
+        if not isinstance(other, Vector):
+            return 'Error - Invalid operation'
+
+        elif len(self.vector) != len(other.vector):
+            return 'Error - Invalid dimensions'
+
+        for i in range(len(self.vector)):
+            self.vector[i] = self.vector[i] + self.other[i]
+        
+        return self
     # --- ends here

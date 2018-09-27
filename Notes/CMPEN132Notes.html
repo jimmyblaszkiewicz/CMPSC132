@@ -1,0 +1,1716 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  max-width: 980px;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 45px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headerlink {
+  font: normal 400 16px fontawesome-mini;
+  vertical-align: middle;
+  margin-left: -16px;
+  float: left;
+  display: inline-block;
+  text-decoration: none;
+  opacity: 0;
+  color: #333;
+}
+
+.markdown-body .headerlink:focus {
+  outline: none;
+}
+
+.markdown-body h1 .headerlink {
+  margin-top: 0.8rem;
+}
+
+.markdown-body h2 .headerlink,
+.markdown-body h3 .headerlink {
+  margin-top: 0.6rem;
+}
+
+.markdown-body h4 .headerlink {
+  margin-top: 0.2rem;
+}
+
+.markdown-body h5 .headerlink,
+.markdown-body h6 .headerlink {
+  margin-top: 0;
+}
+
+.markdown-body .headerlink:hover,
+.markdown-body h1:hover .headerlink,
+.markdown-body h2:hover .headerlink,
+.markdown-body h3:hover .headerlink,
+.markdown-body h4:hover .headerlink,
+.markdown-body h5:hover .headerlink,
+.markdown-body h6:hover .headerlink {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px fontawesome-mini;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\e157';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><style>/*github*/
+.codehilite {background-color:#fff;color:#333333;}
+.codehilite .hll {background-color:#ffffcc;}
+.codehilite .c{color:#999988;font-style:italic}
+.codehilite .err{color:#a61717;background-color:#e3d2d2}
+.codehilite .k{font-weight:bold}
+.codehilite .o{font-weight:bold}
+.codehilite .cm{color:#999988;font-style:italic}
+.codehilite .cp{color:#999999;font-weight:bold}
+.codehilite .c1{color:#999988;font-style:italic}
+.codehilite .cs{color:#999999;font-weight:bold;font-style:italic}
+.codehilite .gd{color:#000000;background-color:#ffdddd}
+.codehilite .ge{font-style:italic}
+.codehilite .gr{color:#aa0000}
+.codehilite .gh{color:#999999}
+.codehilite .gi{color:#000000;background-color:#ddffdd}
+.codehilite .go{color:#888888}
+.codehilite .gp{color:#555555}
+.codehilite .gs{font-weight:bold}
+.codehilite .gu{color:#800080;font-weight:bold}
+.codehilite .gt{color:#aa0000}
+.codehilite .kc{font-weight:bold}
+.codehilite .kd{font-weight:bold}
+.codehilite .kn{font-weight:bold}
+.codehilite .kp{font-weight:bold}
+.codehilite .kr{font-weight:bold}
+.codehilite .kt{color:#445588;font-weight:bold}
+.codehilite .m{color:#009999}
+.codehilite .s{color:#dd1144}
+.codehilite .n{color:#333333}
+.codehilite .na{color:teal}
+.codehilite .nb{color:#0086b3}
+.codehilite .nc{color:#445588;font-weight:bold}
+.codehilite .no{color:teal}
+.codehilite .ni{color:purple}
+.codehilite .ne{color:#990000;font-weight:bold}
+.codehilite .nf{color:#990000;font-weight:bold}
+.codehilite .nn{color:#555555}
+.codehilite .nt{color:navy}
+.codehilite .nv{color:teal}
+.codehilite .ow{font-weight:bold}
+.codehilite .w{color:#bbbbbb}
+.codehilite .mf{color:#009999}
+.codehilite .mh{color:#009999}
+.codehilite .mi{color:#009999}
+.codehilite .mo{color:#009999}
+.codehilite .sb{color:#dd1144}
+.codehilite .sc{color:#dd1144}
+.codehilite .sd{color:#dd1144}
+.codehilite .s2{color:#dd1144}
+.codehilite .se{color:#dd1144}
+.codehilite .sh{color:#dd1144}
+.codehilite .si{color:#dd1144}
+.codehilite .sx{color:#dd1144}
+.codehilite .sr{color:#009926}
+.codehilite .s1{color:#dd1144}
+.codehilite .ss{color:#990073}
+.codehilite .bp{color:#999999}
+.codehilite .vc{color:teal}
+.codehilite .vg{color:teal}
+.codehilite .vi{color:teal}
+.codehilite .il{color:#009999}
+.codehilite .gc{color:#999;background-color:#EAF2F5}
+</style><title>CMPEN132Notes</title></head><body><article class="markdown-body"><h1 id="intro-to-python">Intro to Python<a class="headerlink" href="#intro-to-python" title="Permanent link"></a></h1>
+<ul>
+<li>high level</li>
+<li>GEN PURPOSE</li>
+<li>Interpreted<ul>
+<li>Dynamic</li>
+<li>Emphasizes code readability, simple syntax</li>
+<li>Java has complex syntax in hello world program with all that public static void main nonsense</li>
+<li>Python is just: print(“Hello World”)</li>
+<li>Uses whitespace indentation rather than curly braces or keywords to delimit blocks</li>
+<li>This is a huge problem i hate it</li>
+<li>Game breaking</li>
+<li>Cross platform</li>
+</ul>
+</li>
+</ul>
+<h3 id="dynamic-language">Dynamic language<a class="headerlink" href="#dynamic-language" title="Permanent link"></a></h3>
+<ul>
+<li>Static - variable name attached to object and type, when changes are made, makes sure that type matches initial type</li>
+<li>Dynamic - more freedom on working with data, type doesn’t have to match after initialization (actually no type is given in initialization)</li>
+</ul>
+<h3 id="about-the-python-program">About the python program<a class="headerlink" href="#about-the-python-program" title="Permanent link"></a></h3>
+<h4 id="two-kinds-of-programs-to-process-high-level-languages-into-low-level-languages">Two kinds of programs to process high level languages into low level languages<a class="headerlink" href="#two-kinds-of-programs-to-process-high-level-languages-into-low-level-languages" title="Permanent link"></a></h4>
+<ul>
+<li>Interpreters: Source code &gt; interpreter &gt; output
+Translates line by line<ul>
+<li>Better for testing for running quickly</li>
+</ul>
+</li>
+<li>Compilers: Source code &gt; Compiler &gt; Object Code &gt; Executor &gt; Output<ul>
+<li>Translates entire code before running, but makes an executable file to run instantly</li>
+<li>Slower to run multiple times quickly</li>
+</ul>
+</li>
+</ul>
+<h4 id="interpreting-python-programs">Interpreting Python Programs<a class="headerlink" href="#interpreting-python-programs" title="Permanent link"></a></h4>
+<h5 id="what-happens-when-we-enter-python-hellopy-at-the-command-shell-prompt">What Happens when we enter python hello.py at the command shell prompt<a class="headerlink" href="#what-happens-when-we-enter-python-hellopy-at-the-command-shell-prompt" title="Permanent link"></a></h5>
+<ul>
+<li>Python tells the OS to load the Python interpreter into memory and run it</li>
+<li>We invoke python with a command line argument which python reads after it starts running</li>
+<li>Since the command line argument was the name of a file (hello.py) the python loads the file named by the argument and executes the Python code in it</li>
+</ul>
+<h5 id="python-interpreter">Python Interpreter<a class="headerlink" href="#python-interpreter" title="Permanent link"></a></h5>
+<h6 id="two-ways-to-use-the-python-interpreter">Two ways to use the python interpreter<a class="headerlink" href="#two-ways-to-use-the-python-interpreter" title="Permanent link"></a></h6>
+<ul>
+<li>
+<p>Shell mode: type python expressions into the python shell, and the interpreter immediately shows the result</p>
+</li>
+<li>
+<p>Python Shell</p>
+</li>
+<li>REPL</li>
+<li>Invoke the python interactive shell by entering python at your command shell’s prompt</li>
+</ul>
+<hr />
+<h1 id="python-syntax">Python Syntax<a class="headerlink" href="#python-syntax" title="Permanent link"></a></h1>
+<h4 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link"></a></h4>
+<ul>
+<li>Cannot start a name with a number</li>
+<li>Need to initialize the variable before it’s referenced<ul>
+<li>x=x+3 wont work unless x was defined earlier</li>
+</ul>
+</li>
+<li>Can change types</li>
+<li>Creates a memory block every time we create a value</li>
+</ul>
+<h4 id="mutable-and-immutable-objects">Mutable and immutable objects<a class="headerlink" href="#mutable-and-immutable-objects" title="Permanent link"></a></h4>
+<ul>
+<li>Mutable objects: can be altered in place<ul>
+<li>Byte array</li>
+<li>list </li>
+<li>Set</li>
+<li>Dict</li>
+<li>User-defined classes (unless specifically made immutable)</li>
+</ul>
+</li>
+<li>Immutable objects: cannot be changed in place (in the same memory allocation)<ul>
+<li>Int</li>
+<li>Float</li>
+<li>Long</li>
+<li>Complex</li>
+<li>String</li>
+<li>Bytes</li>
+<li>Tuple</li>
+<li>Range</li>
+<li>Frozen set (immutable version of set)</li>
+<li>Boolean</li>
+<li>Array</li>
+</ul>
+</li>
+</ul>
+<h5 id="aliasing">Aliasing<a class="headerlink" href="#aliasing" title="Permanent link"></a></h5>
+<ul>
+<li>Occurs when two or more variables reference the same object</li>
+</ul>
+<h4 id="string-methods">String Methods<a class="headerlink" href="#string-methods" title="Permanent link"></a></h4>
+<ul>
+<li>Str is a class with many methods that can be invoked using the dot operator</li>
+<li><code>str.find(substr)</code> returns the index of the first occurrence of substr in str:</li>
+</ul>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="err">“</span><span class="n">Hello</span> <span class="n">world</span><span class="err">”</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="err">‘</span><span class="n">l</span><span class="err">’</span><span class="p">)</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="err">”</span><span class="n">banana</span><span class="err">”</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="err">“</span><span class="n">nan</span><span class="err">”</span><span class="p">)</span>
+<span class="mi">2</span>
+</pre></div>
+
+<ul>
+<li><code>str.replace(old, new)</code> returns a copy of str with all occurrences of old replaced with new</li>
+</ul>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span><span class="err">”</span><span class="n">banana</span><span class="err">”</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="err">“</span><span class="n">ba</span><span class="err">”</span><span class="p">,</span><span class="err">”</span><span class="n">Choco</span><span class="err">”</span><span class="p">)</span>
+<span class="err">‘</span><span class="n">Choconana</span><span class="err">’</span>
+</pre></div>
+
+<ul>
+<li>Check documentation to see if you need more arguments to specify 
+<code>str.split(delimiter)</code></li>
+</ul>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span><span class="err">”</span><span class="n">banana</span><span class="err">”</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="err">“</span><span class="n">nan</span><span class="err">”</span><span class="p">)</span>
+<span class="p">[</span><span class="err">‘</span><span class="n">ba</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">a</span><span class="err">’</span><span class="p">]</span>
+</pre></div>
+
+<ul>
+<li><code>str.join(iterable)</code> returns a string that is the concatenation of all the elements of iterable with str in between each element</li>
+</ul>
+<div class="codehilite"><pre><span class="err">“</span><span class="n">co</span><span class="err">”</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="err">‘</span><span class="n">cho</span><span class="err">’</span><span class="p">,</span><span class="err">’</span><span class="n">late</span><span class="err">’</span><span class="p">])</span>
+<span class="n">chocolate</span>
+<span class="err">“”</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="err">‘</span><span class="n">cho</span><span class="err">’</span><span class="p">,</span><span class="err">’</span><span class="n">co</span><span class="err">’</span><span class="p">,</span><span class="err">’</span><span class="n">late</span><span class="p">])</span>
+<span class="n">chocolate</span>
+</pre></div>
+
+<ul>
+<li>
+<p><code>str.strip()</code> returns a copy of str with leading and trailing whitespace removed
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span><span class="err">”</span> <span class="n">spaces</span>       <span class="err">“</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="err">‘</span><span class="n">Spaces</span><span class="err">’</span>
+</pre></div></p>
+</li>
+<li>
+<p><code>str.upper()</code> returns a copy of the string with all lowercase characters in uppercase</p>
+</li>
+<li><code>str.isupper()</code> returns <code>True</code> if str is all uppercase</li>
+<li><code>str.isdigit()</code> returns <code>True</code> if str is all digits</li>
+<li><code>str.startswith(substr)</code> returns <code>True</code> if str starts with substr</li>
+</ul>
+<h4 id="list-operators">List Operators<a class="headerlink" href="#list-operators" title="Permanent link"></a></h4>
+<ul>
+<li>The in operator tests for list membership. Can be negated with not
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span><span class="mi">5</span> <span class="ow">in</span> <span class="n">numbers</span>
+<span class="bp">False</span>
+<span class="o">&gt;&gt;&gt;</span><span class="mi">6</span> <span class="ow">in</span> <span class="n">numbers</span>
+<span class="bp">True</span>
+</pre></div></li>
+<li>The + operator concatenates two lists </li>
+<li>The * operator repeats a list, producing a new list</li>
+<li><code>len(s)</code> returns the number of elements in the list</li>
+<li><code>min(s)</code> returns the least element of s, max(s) returns the greatest</li>
+<li><code>sorted(s)</code> returns a new sorted list</li>
+<li><em>Returns <strong>not</strong> changes</em></li>
+<li><code>s.count(x)</code> number of occurences of x in the sequence s</li>
+<li><code>s.append(x)</code> adds the single element x to the end of s</li>
+<li><code>s.extend(x)</code> adds the elements of x to the end of the list s</li>
+<li><code>s.remove(x)</code> removes the first occurence of x in s, or raises an error if x is not in s</li>
+<li><code>s.pop()</code> removes and returns the last element of th list<ul>
+<li><em>List <strong>is</strong> modified</em></li>
+</ul>
+</li>
+<li><code>s.join()</code> combines the elements of a list to form a string</li>
+<li><code>s.sort()</code> modifies the list it is invoked on</li>
+</ul>
+<h4 id="lists-append-versus-concatenate">Lists - Append versus Concatenate<a class="headerlink" href="#lists-append-versus-concatenate" title="Permanent link"></a></h4>
+<ul>
+<li>With append the original list is simply modified</li>
+<li>With concatenation, an entirely new list is created</li>
+</ul>
+<h4 id="sequence-traversal">Sequence traversal<a class="headerlink" href="#sequence-traversal" title="Permanent link"></a></h4>
+<p><div class="codehilite"><pre><span class="n">Ice_cream</span> <span class="o">=</span> <span class="p">[</span><span class="err">‘</span><span class="n">chocolate</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">vanilla</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">mint</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">strawberry</span><span class="err">’</span><span class="p">]</span>
+</pre></div>
+   - By item or by index</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="n">flavors</span> <span class="ow">in</span> <span class="n">ice_cream</span><span class="p">:</span>
+   <span class="k">print</span><span class="p">(</span><span class="n">flavors</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">position</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ice_cream</span><span class="p">)):</span>
+   <span class="k">print</span><span class="p">(</span><span class="n">ice_cream</span><span class="p">[</span><span class="n">position</span><span class="p">])</span>
+</pre></div>
+
+<p><strong>Remember</strong></p>
+<ul>
+<li>Carefully name your identifiers so you can create readable programs</li>
+<li>Python programs make extensive use of built-in methods and data types and often combine them (lists of lists, dictionaries of lists, etc)</li>
+</ul>
+<h4 id="true-in-python"><code>True</code> in Python<a class="headerlink" href="#true-in-python" title="Permanent link"></a></h4>
+<ul>
+<li>Most things evaluate to true, except false things</li>
+</ul>
+<h4 id="writing-and-running-a-python-script">Writing and running a python script<a class="headerlink" href="#writing-and-running-a-python-script" title="Permanent link"></a></h4>
+<ul>
+<li>Write a function that takes a string as an argument and returns the username from an email address</li>
+</ul>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">username</span><span class="p">(</span><span class="n">email</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">email</span><span class="p">[:</span><span class="n">email</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;@&#39;</span><span class="p">)]</span>
+</pre></div>
+
+<h6 id="82918">8/29/18<a class="headerlink" href="#82918" title="Permanent link"></a></h6>
+<h4 id="for-statement">For statement<a class="headerlink" href="#for-statement" title="Permanent link"></a></h4>
+<ul>
+<li>Iteration statement</li>
+</ul>
+<div class="codehilite"><pre><span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
+</pre></div>
+
+<h4 id="while-statement">While statement<a class="headerlink" href="#while-statement" title="Permanent link"></a></h4>
+<ul>
+<li>While loop repeatedly executes a target statement as long as a given condition is true</li>
+<li>Can result in infinite loops if condition is not falsified</li>
+</ul>
+<h4 id="break-statement">Break statement<a class="headerlink" href="#break-statement" title="Permanent link"></a></h4>
+<ul>
+<li>Break terminates execution of a loop</li>
+<li>Can be used in both while and for loops</li>
+</ul>
+<h4 id="continue-statement">Continue statement<a class="headerlink" href="#continue-statement" title="Permanent link"></a></h4>
+<ul>
+<li>Continue causes to immediately skip the processing of the rest of the body of a loop for the current iteration</li>
+<li>The loop still carries on running for its remaining iterations</li>
+<li>Can be used in both <code>for</code> and <code>while</code> loops</li>
+</ul>
+<h1 id="errors-debugging-and-testing">Errors Debugging and Testing<a class="headerlink" href="#errors-debugging-and-testing" title="Permanent link"></a></h1>
+<h2 id="errors">Errors<a class="headerlink" href="#errors" title="Permanent link"></a></h2>
+<h3 id="different-kinds-of-errors-can-occur-in-a-program-and-it-is-useful-to-distinguish-among-them-to-track-them-down-more-quickly">Different kinds of errors can occur in a program, and it is useful to distinguish among them to track them down more quickly<a class="headerlink" href="#different-kinds-of-errors-can-occur-in-a-program-and-it-is-useful-to-distinguish-among-them-to-track-them-down-more-quickly" title="Permanent link"></a></h3>
+<ul>
+<li>Syntax errors: produced by Python when it is translating the source code into bytecode</li>
+<li>Runtime errors: produced by the runtime system if something goes wrong while the program is running</li>
+<li>Semantic errors: problems with a program that compiles and runs but does not do the right thing</li>
+</ul>
+<h4 id="syntax-errors-usually-easy-to-fix-once-we-find-them">Syntax Errors: usually easy to fix once we find them<a class="headerlink" href="#syntax-errors-usually-easy-to-fix-once-we-find-them" title="Permanent link"></a></h4>
+<ul>
+<li>Error messages are often not helpful<ul>
+<li><code>Invalid syntax</code></li>
+<li><code>Invalid token</code></li>
+<li><code>Unexpected indent</code></li>
+</ul>
+</li>
+<li>Error message <em>does</em> tell us where in the program the problem occurred</li>
+</ul>
+<h5 id="avoiding-syntax-errors">Avoiding Syntax Errors<a class="headerlink" href="#avoiding-syntax-errors" title="Permanent link"></a></h5>
+<ul>
+<li>Make sure you are not using a keyword for a variable name</li>
+<li>Check that you have a colon at the end of the header of every compound statement including <code>for</code>, <code>while</code>, <code>if</code>, and <code>def</code></li>
+<li>Check that indentation is consistent</li>
+<li>Don&rsquo;t mix tabs and spaces</li>
+<li>Make sure that any strings in the code has matching quotation marks<ul>
+<li>Kind of hard to screw that up </li>
+</ul>
+</li>
+<li>Make sure you do not have an unclosed bracket</li>
+<li>Check for classic = rather than == inside a conditional</li>
+</ul>
+<h4 id="runtime-errors">Runtime Errors<a class="headerlink" href="#runtime-errors" title="Permanent link"></a></h4>
+<ul>
+<li>Program does absolutely nothing</li>
+<li>Program hangs</li>
+<li>Infinite loop</li>
+<li>Infinite recursion</li>
+<li>When i run the program i get an exception such as:<ul>
+<li>NameError</li>
+<li>TypeError</li>
+<li>KeyError</li>
+<li>AttributeError</li>
+<li>IndexError</li>
+</ul>
+</li>
+<li>Make sure you test all your code, including random else block</li>
+</ul>
+<h4 id="semantic-errors">Semantic Errors<a class="headerlink" href="#semantic-errors" title="Permanent link"></a></h4>
+<ul>
+<li>Hardest to debug because compiler and runtime system provide no information about why</li>
+<li>Code will run successfully in the sense that the computer will not generate any error messages. However the program will not do the right thing.</li>
+</ul>
+<h2 id="software-development-lifecycle">Software Development lifecycle<a class="headerlink" href="#software-development-lifecycle" title="Permanent link"></a></h2>
+<p>Requirements -&gt; Design -&gt; Coding -&gt; Debugging Testing -&gt; Deployment -&gt; Req…
+Debugging</p>
+<ul>
+<li>Involves locating and correcting code errors in program</li>
+<li>Begins when you start writing code and continues as code is combined with other units of programming</li>
+<li>Best place is away from the computer</li>
+<li>Can be more time consuming than writing it, but its the most efficient way to test and make sure it works correctly</li>
+</ul>
+<h3 id="6-stages-of-debugging">6 stages of debugging<a class="headerlink" href="#6-stages-of-debugging" title="Permanent link"></a></h3>
+<ol>
+<li>That can’t happen</li>
+<li>That doesn’t happen on my machine</li>
+<li>That shouldn’t happen</li>
+<li>Why does that happen?</li>
+<li>Oh, I see,</li>
+<li>How did that ever work?</li>
+</ol>
+<h4 id="principles">Principles<a class="headerlink" href="#principles" title="Permanent link"></a></h4>
+<ul>
+<li>Know what the code is supposed to do</li>
+<li>When in doubt, print to the console</li>
+<li>Make it fail every time</li>
+<li>Change one thing at a time</li>
+<li>Keep track of what you have done</li>
+<li>Do not panic when you generate a ton of errors</li>
+<li>Version control revisited</li>
+<li>Ask for help</li>
+</ul>
+<h6 id="83118">8/31/18<a class="headerlink" href="#83118" title="Permanent link"></a></h6>
+<h2 id="advantages-of-unit-testing">Advantages of Unit Testing<a class="headerlink" href="#advantages-of-unit-testing" title="Permanent link"></a></h2>
+<p>Can write down several test cases and let them be checked every time we make changes to our code - without retesting every time</p>
+<ul>
+<li>Most popular is unittest module</li>
+<li>Create a class that inherits from the unittest.TestCase class</li>
+</ul>
+<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">from</span> <span class="nn">script</span> <span class="kn">import</span> <span class="n">my_function</span>
+<span class="k">class</span> <span class="nc">MyTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+   <span class="k">def</span> <span class="nf">test_my_function</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">my_function</span><span class="p">(</span><span class="nb">input</span><span class="p">),</span><span class="n">expected_output</span><span class="p">)</span>
+
+
+<span class="n">If</span> <span class="n">__name__</span><span class="o">==</span><span class="err">’</span><span class="n">__main__</span><span class="err">’</span><span class="p">:</span> <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="nb">exit</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+<ul>
+<li>Based on assertions<ul>
+<li>like assertTrue</li>
+<li>assertEqual</li>
+<li>others</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h6 id="91018">9/10/18<a class="headerlink" href="#91018" title="Permanent link"></a></h6>
+<h1 id="oop-object-oriented-programing">OOP = Object Oriented Programing<a class="headerlink" href="#oop-object-oriented-programing" title="Permanent link"></a></h1>
+<h2 id="what-are-objects">What are objects<a class="headerlink" href="#what-are-objects" title="Permanent link"></a></h2>
+<h3 id="object-construction">Object construction<a class="headerlink" href="#object-construction" title="Permanent link"></a></h3>
+<ul>
+<li>When calling a new class</li>
+<li>New instance of that class is created</li>
+<li>The <code>__init__ method (constructor, initializer)</code> is called with the new object as its first argument, by convention named <code>self</code>, along with any additional arguments provided in the call expression</li>
+</ul>
+<div class="codehilite"><pre><span class="k">class</span> <span class="nc">Account</span><span class="p">:</span>
+   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">holder</span><span class="o">=</span><span class="n">name</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">balance</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+
+<ul>
+<li><code>__new__</code> is responsible for controlling the creation of the object<ul>
+<li>Sometimes maybe you don’t want the object to be created under certain conditions who knows</li>
+</ul>
+</li>
+</ul>
+<h4 id="the-self">The <code>self</code><a class="headerlink" href="#the-self" title="Permanent link"></a></h4>
+<ul>
+<li>Refers to the object itself</li>
+<li>If you have a method which takes no arguments, then you still have to have the self argument</li>
+<li>binds the instructions in the method call with the object</li>
+<li>1 class but many objects with their own states</li>
+</ul>
+<h3 id="object-identity">Object identity<a class="headerlink" href="#object-identity" title="Permanent link"></a></h3>
+<h4 id="creation">Creation<a class="headerlink" href="#creation" title="Permanent link"></a></h4>
+<ul>
+<li>Every object that is an instance of a user defined class has a unique identity</li>
+</ul>
+<div class="codehilite"><pre><span class="n">x</span><span class="o">=</span><span class="n">Account</span><span class="p">(</span><span class="err">‘</span><span class="n">Alan</span><span class="err">’</span><span class="p">)</span>
+<span class="n">y</span><span class="o">=</span><span class="n">Account</span><span class="p">(</span><span class="err">‘</span><span class="n">Liz</span><span class="err">’</span><span class="p">)</span>
+</pre></div>
+
+<ul>
+<li>Class is just a template, object holds all the info</li>
+</ul>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span><span class="n">x</span><span class="o">.</span><span class="n">holder</span>
+<span class="err">‘</span><span class="n">Alan</span><span class="err">’</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">y</span><span class="o">.</span><span class="n">holder</span>
+<span class="err">‘</span><span class="n">Liz</span><span class="err">’</span>
+</pre></div>
+
+<ul>
+<li>The identity operator ‘is’ checks to see if two expressions evaluate to the same object<ul>
+<li>The same exact memory block</li>
+</ul>
+</li>
+<li>Binding an object to a new identifier using the assignment operator does not create a new object<ul>
+<li>Instead Gives another name to the same object</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span class="n">x</span><span class="o">=</span><span class="n">Account</span><span class="p">(</span><span class="err">‘</span><span class="n">Alan</span><span class="err">’</span><span class="p">)</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">x</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">w</span> <span class="ow">is</span> <span class="n">x</span>
+<span class="bp">True</span>
+</pre></div>
+
+<h4 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link"></a></h4>
+<div class="codehilite"><pre><span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
+   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">breed</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">breed</span> <span class="o">=</span> <span class="n">breed</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">vaccines</span> <span class="o">=</span> <span class="mi">0</span>
+   <span class="k">def</span> <span class="nf">getVaccine</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">vaccines</span><span class="o">+=</span><span class="mi">1</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">vaccines</span>
+</pre></div>
+
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">Harry</span> <span class="o">=</span> <span class="n">dog</span><span class="p">(</span><span class="err">‘</span><span class="n">harry</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">chihuahua</span><span class="err">’</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">harry</span><span class="o">.</span><span class="n">vaccines</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">harry</span><span class="p">,</span> <span class="err">‘</span><span class="n">vaccines</span><span class="err">’</span><span class="p">)</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">harry</span><span class="o">.</span><span class="n">getVaccine</span><span class="p">()</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">harry</span><span class="o">.</span><span class="n">vaccines</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">harry</span><span class="p">,</span> <span class="err">‘</span><span class="n">vaccines</span><span class="err">’</span><span class="p">)</span>
+<span class="bp">True</span>
+<span class="o">&gt;&gt;&gt;</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">harry</span><span class="p">,</span> <span class="err">‘</span><span class="n">size</span><span class="err">’</span><span class="p">)</span>
+<span class="bp">False</span>
+</pre></div>
+
+<h4 id="class-and-instance-attributes">Class and instance attributes<a class="headerlink" href="#class-and-instance-attributes" title="Permanent link"></a></h4>
+<ul>
+<li>Different name, breed and such for each dog object instance</li>
+</ul>
+<div class="codehilite"><pre><span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
+<span class="n">index</span> <span class="o">=</span> <span class="mf">0.04</span>
+   <span class="k">def</span> <span class="nf">___init___</span> <span class="o">...</span>
+</pre></div>
+
+<ul>
+<li>Look at constructor for index, no, look at class</li>
+<li>Index is not copied to each instance, it belongs to the class</li>
+</ul>
+<h5 id="attribute-assignment">Attribute assignment<a class="headerlink" href="#attribute-assignment" title="Permanent link"></a></h5>
+<ul>
+<li>Assigment statements with dot expression affect attr for the object on the left-hand of the dot expression</li>
+<li>If its an instance, then assignment sets instance attr</li>
+<li>If object is a class, then assignment sets a class attribute</li>
+</ul>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span><span class="n">Harry</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="o">.</span><span class="mi">09</span>
+<span class="c1">#Creates an attribute index into Harry object</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">Harry</span><span class="o">.</span><span class="n">index</span>
+<span class="o">.</span><span class="mi">09</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">Liz</span><span class="o">.</span><span class="n">index</span>
+<span class="o">.</span><span class="mo">04</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">Dog</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="o">.</span><span class="mo">07</span>
+<span class="n">Harry</span><span class="o">.</span><span class="n">index</span>
+<span class="o">.</span><span class="mi">09</span>
+</pre></div>
+
+<h3 id="special-methods-and-operator-overwriting">Special methods and operator overwriting<a class="headerlink" href="#special-methods-and-operator-overwriting" title="Permanent link"></a></h3>
+<ul>
+<li>Special methods have double underscores at the beginning and end</li>
+<li>You do not have to invoke them directly. The invocation is realized behind the scenes</li>
+<li>Print obj goes to <code>__str__()</code></li>
+</ul>
+<div class="codehilite"><pre><span class="n">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+   <span class="k">return</span> <span class="err">‘</span><span class="n">My</span> <span class="n">name</span> <span class="ow">is</span> <span class="p">{}</span><span class="err">’</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+
+<h3 id="inheritance">Inheritance<a class="headerlink" href="#inheritance" title="Permanent link"></a></h3>
+<ul>
+<li>Arrange objects in a hierarchy from most general to most specific</li>
+<li>Classes can extend the definition of other classes</li>
+<li>Allows use (or extension) of methods and attributes already defined in the previous one</li>
+</ul>
+<p>To define a subclass, put the name of the superclass in parentheses after the subclass’s name on the first line of the definition.</p>
+<div class="codehilite"><pre><span class="k">class</span> <span class="nc">George</span> <span class="p">(</span><span class="n">Human</span><span class="p">):</span>
+</pre></div>
+
+<ul>
+<li>Superclass has all the common functionality for the subclasses
+Subclass inherits from the superclass</li>
+<li>Not the other way around</li>
+<li>Superclass is more general</li>
+<li>Subclass more specific</li>
+<li><code>Animal</code> is a superclass</li>
+<li>Mammal is subclass of animal and superclass of Dog and Zebra</li>
+<li>Lizard is parent class of iguana and subclass of Reptile</li>
+</ul>
+<div class="codehilite"><pre><span class="k">class</span> <span class="nc">name</span><span class="p">(</span><span class="n">parent</span><span class="p">):</span>
+   <span class="n">body</span>
+</pre></div>
+
+<ul>
+<li>Need to initialize other values (name and vaccines for instance)</li>
+<li>Use <code>super().__init__(name)</code></li>
+<li>Initializes name and vaccines (vacc initially 0)</li>
+</ul>
+<h3 id="polymorphism">Polymorphism<a class="headerlink" href="#polymorphism" title="Permanent link"></a></h3>
+<ul>
+<li>Based on greek words for many forms</li>
+<li>Process of using an operator or function in different ways for data input</li>
+<li>
+<p>Can be carried out through inheritance </p>
+</li>
+<li>
+<p>“Speak everybody”</p>
+<ul>
+<li><code>Quack, moo, woof, hiss, blub-blub</code></li>
+</ul>
+</li>
+<li>Same command sent, but different result</li>
+</ul>
+<div class="codehilite"><pre><span class="mi">3</span><span class="o">+</span><span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">7</span>
+<span class="err">‘</span><span class="mi">3</span><span class="err">’</span><span class="o">+</span><span class="err">’</span><span class="mi">4</span><span class="err">’</span>
+<span class="o">&gt;&gt;&gt;</span><span class="err">’</span><span class="mi">34</span><span class="err">’</span>
+</pre></div>
+
+<ul>
+<li>Same operator but different result</li>
+</ul>
+<h3 id="encapsulation">Encapsulation<a class="headerlink" href="#encapsulation" title="Permanent link"></a></h3>
+<ul>
+<li>Restrict access to methods and variables to prevent the data from being modified by accident</li>
+<li>Prevents from accessing accidentally, but not intentionally</li>
+<li>
+<p>Private attributes and methods are not really hidden, they are renamed <code>_ClassName__VariableName</code> </p>
+</li>
+<li>
+<p>Access private variables with set methods</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">setMaxSpeed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">speed</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__maxspeed</span> <span class="o">=</span> <span class="n">speed</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__maxspeed</span>
+<span class="k">def</span> <span class="nf">getMaxSpeed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">speed</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__maxspeed</span>
+</pre></div>
+
+<h3 id="data-abstraction">Data Abstraction<a class="headerlink" href="#data-abstraction" title="Permanent link"></a></h3>
+<ul>
+<li>Abstract classes contain one or more abstract methods</li>
+<li>May not be instantiated and require subclasses to provide implementations for the abstract methods</li>
+<li>Abstract methods are methods that are declared but contain no implementation</li>
+</ul>
+<h4 id="data-abstraction-with-abc">Data Abstraction with ABC<a class="headerlink" href="#data-abstraction-with-abc" title="Permanent link"></a></h4>
+<p>How do you force the subclasses to implement the abstract methods?</p>
+<ul>
+<li>Subclass behaves like parent class + something</li>
+<li>Every class that inherits from me must have these methods</li>
+</ul>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">class</span> <span class="nc">Vehicle</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+      <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="n">name</span>
+
+   <span class="nd">@abstractmethod</span>
+   <span class="k">def</span> <span class="nf">drive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="n">Raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s">&quot;Subclass must implement abstract method&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">MiniVan</span><span class="p">(</span><span class="n">Vehicle</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">Self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">seats</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">seats</span> <span class="o">=</span> <span class="n">seats</span>
+    <span class="k">def</span> <span class="nf">drive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;Mini Van driving - baby on board!&#39;</span>
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;Mini van stopping&#39;</span>
+</pre></div>
+
+<hr />
+<h6 id="92418">9/24/18<a class="headerlink" href="#92418" title="Permanent link"></a></h6>
+<h1 id="midterm-things">Midterm things<a class="headerlink" href="#midterm-things" title="Permanent link"></a></h1>
+<ul>
+<li>Date 09/28 - 09/29</li>
+<li>Location Thomas 101</li>
+<li>Scope: Modules 1-4</li>
+<li>In class: Paper exam (80%): 14 questions<ul>
+<li>6 multiple choice</li>
+<li>4 open ended</li>
+<li>2 predict the output</li>
+<li>2 writing code</li>
+</ul>
+</li>
+<li>Coding Exam (20%): Write 3 programs<ul>
+<li>due saturday night</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h1 id="recursion">Recursion<a class="headerlink" href="#recursion" title="Permanent link"></a></h1>
+<h2 id="what-is-recursion">What is Recursion<a class="headerlink" href="#what-is-recursion" title="Permanent link"></a></h2>
+<ul>
+<li>method of solving problems that involves breaking a problem down into smaller and smaller subproblems until you get to a point where it can be solved trivially</li>
+<li>recursive functions call themselves</li>
+<li>must have a termination condition, often called base case. this is necessary to stop the function from calling itself an infinite number of times<ul>
+<li>Python might be around 500 max function calls</li>
+</ul>
+</li>
+</ul>
+<h3 id="laws-of-recursion">Laws of Recursion<a class="headerlink" href="#laws-of-recursion" title="Permanent link"></a></h3>
+<h4 id="all-recursive-algorithms-must-obey-three-important-laws">All recursive algorithms must obey three important laws<a class="headerlink" href="#all-recursive-algorithms-must-obey-three-important-laws" title="Permanent link"></a></h4>
+<div class="codehilite"><pre>-must have a base case
+-must change its state and move toward the base case
+-must call itself, recursively
+    -haha the laws of recursion are recursive, hilarious.
+</pre></div>
+
+
+<h2 id="sum-a-list-of-numbers">Sum a list of numbers<a class="headerlink" href="#sum-a-list-of-numbers" title="Permanent link"></a></h2>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">listsum</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">item</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="k">def</span> <span class="nf">recursiveSum</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">recursiveSum</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+</pre></div>
+
+<h6 id="92618">9/26/18<a class="headerlink" href="#92618" title="Permanent link"></a></h6>
+<h2 id="harmful-recursion">Harmful Recursion<a class="headerlink" href="#harmful-recursion" title="Permanent link"></a></h2>
+<ul>
+<li>When used incorrectly, recursion could take too much memory and computer resources</li>
+</ul>
+<h3 id="fibonacci-numbers">Fibonacci numbers:<a class="headerlink" href="#fibonacci-numbers" title="Permanent link"></a></h3>
+<h4 id="recursively">Recursively<a class="headerlink" href="#recursively" title="Permanent link"></a></h4>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">fibr</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+   <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">n</span>
+   <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">fibr</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibr</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">fibr</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+<ul>
+<li>when the recursion tree is drawn, the same value is calculated many many times</li>
+<li><code>fibr(5)</code> takes 15 open frames to calculate</li>
+</ul>
+<h4 id="iteratively">Iteratively<a class="headerlink" href="#iteratively" title="Permanent link"></a></h4>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">fibi</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+   <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
+   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+      <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+   <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+
+<h3 id="pros-and-cons">Pros and Cons<a class="headerlink" href="#pros-and-cons" title="Permanent link"></a></h3>
+<h4 id="pros">Pros<a class="headerlink" href="#pros" title="Permanent link"></a></h4>
+<ul>
+<li>make the code look clean and elegant</li>
+<li>complex task can be broken down into simpler subproblems using recusion</li>
+<li>sequence generation is easier with recursion than using nested iteration</li>
+</ul>
+<h4 id="cons">Cons<a class="headerlink" href="#cons" title="Permanent link"></a></h4>
+<ul>
+<li>logic is hard to follow</li>
+<li>expensive bc takes up lots of memory and time</li>
+<li>hard to debug</li>
+</ul></article></body></html>
