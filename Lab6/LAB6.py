@@ -46,21 +46,63 @@ class Vector:
 
     # --- Your code starts here
     def __str__(self):
-        return "Fuck"
+        return "Vector({})".format(self.vector)
 
     def __repr__(self):
-        return "Shit"
-        #return "Vector({})".format(self.vector)
+        return "Vector({})".format(self.vector)
 
     def __add__(self, other):
+        # check if both are vector objects
         if not isinstance(other, Vector):
             return 'Error - Invalid operation'
 
+        # check if they have the same number of coordinates
         elif len(self.vector) != len(other.vector):
             return 'Error - Invalid dimensions'
 
+        # loop through and add each one
+        newVector = Vector([])
         for i in range(len(self.vector)):
-            self.vector[i] = self.vector[i] + self.other[i]
+            newVector.vector.append(self.vector[i] + other.vector[i])
         
-        return self
+        return newVector
+
+    def __sub__(self, other):
+        # check if both are vector objects
+        if not isinstance(other, Vector):
+            return 'Error - Invalid operation'
+
+        # check if they have the same number of coordinates
+        elif len(self.vector) != len(other.vector):
+            return 'Error - Invalid dimensions'
+
+        # loop through and subtract each one
+        newVector = Vector([])
+        for i in range(len(self.vector)):
+            newVector.vector.append(self.vector[i] - other.vector[i])
+        
+        return newVector
+
+    def __mul__(self, other):
+        # check if both are vector objects
+        # if they aren't do scalar multiplication
+        newVector = Vector([])
+        if not isinstance(other, Vector):
+            for i in range(len(self.vector)):
+                newVector.vector.append(self.vector[i]*other)
+            return newVector
+
+        # if 
+        elif len(self.vector) <= len(other.vector):
+            length = len(self.vector)
+        else:
+            length = len(other.vector)
+
+        # if it passes both previous tests, do dot product
+        dotProduct = 0
+        for i in range(length):
+            dotProduct += self.vector[i] * other.vector[i]
+
+        return dotProduct
+
     # --- ends here
