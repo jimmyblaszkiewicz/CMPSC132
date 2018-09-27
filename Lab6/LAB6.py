@@ -54,11 +54,11 @@ class Vector:
     def __add__(self, other):
         # check if both are vector objects
         if not isinstance(other, Vector):
-            return 'Error - Invalid operation'
+            return 'error - Invalid operation'
 
         # check if they have the same number of coordinates
         elif len(self.vector) != len(other.vector):
-            return 'Error - Invalid dimensions'
+            return 'error - Invalid dimensions'
 
         # loop through and add each one
         newVector = Vector([])
@@ -72,11 +72,11 @@ class Vector:
     def __sub__(self, other):
         # check if both are vector objects
         if not isinstance(other, Vector):
-            return 'Error - Invalid operation'
+            return 'error - Invalid operation'
 
         # check if they have the same number of coordinates
         elif len(self.vector) != len(other.vector):
-            return 'Error - Invalid dimensions'
+            return 'error - Invalid dimensions'
 
         # loop through and subtract each one
         newVector = Vector([])

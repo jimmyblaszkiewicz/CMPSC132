@@ -11,10 +11,10 @@ class EncryptTestCase(unittest.TestCase):
     def test_add_dimension_error(self):
         vect = Vector([4,2])
         vect2 = Vector([3])
-        self.assertEqual(vect+vect2, 'Error - Invalid dimensions')
+        self.assertEqual(vect+vect2, 'error - Invalid dimensions')
     def test_add_operation_error(self):
         vect = Vector([1,2])
-        self.assertEqual(vect + 3, 'Error - Invalid operation')
+        self.assertEqual(vect + 3, 'error - Invalid operation')
 
     def test_sub_1(self):
         vect = Vector([1,2,3])
@@ -23,10 +23,10 @@ class EncryptTestCase(unittest.TestCase):
     def test_sub_dimension_error(self):
         vect = Vector([4,2])
         vect2 = Vector([3])
-        self.assertEqual(vect-vect2, 'Error - Invalid dimensions')
+        self.assertEqual(vect-vect2, 'error - Invalid dimensions')
     def test_sub_operation_error(self):
         vect = Vector([1,2])
-        self.assertEqual(vect - 3, 'Error - Invalid operation')
+        self.assertEqual(vect - 3, 'error - Invalid operation')
 
     def test_scalar_multiplication(self):
         vect = Vector([1,4,10])
