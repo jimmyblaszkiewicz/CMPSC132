@@ -593,13 +593,10 @@ def fibi(n):
    return x
 ```
 
-### Pros and Cons
-#### Pros
-   - make the code look clean and elegant
-   - complex task can be broken down into simpler subproblems using recusion
-   - sequence generation is easier with recursion than using nested iteration
+|Pros                       | Cons                      |
+|---------------------------|---------------------------|
+|elegant                    | hard logic                |
+|complex -> simple          | memory and time intensive |
+|sequence generation easier | hard to debug             |
 
-#### Cons
-   - logic is hard to follow
-   - expensive bc takes up lots of memory and time
-   - hard to debug
+Table: Pros and Cons of Recursion
