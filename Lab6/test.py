@@ -44,4 +44,8 @@ class EncryptTestCase(unittest.TestCase):
         vect2 = Vector([1,4,5,6])
         self.assertEqual(vect * vect2, 19)
 
+    def test_rmul(self):
+        vect = Vector([1,4,10])
+        self.assertEqual(2*vect, Vector([2, 8, 20]))
+
 if __name__ == '__main__':unittest.main(exit=False)

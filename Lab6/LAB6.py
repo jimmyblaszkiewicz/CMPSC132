@@ -109,4 +109,28 @@ class Vector:
 
         return dotProduct
 
+    def __rmul__(self, other):
+        # check if both are vector objects
+        # if they aren't do scalar multiplication
+        newVector = Vector([])
+        if not isinstance(other, Vector):
+            for i in range(len(self.vector)):
+                newVector.vector.append(self.vector[i]*other)
+            return newVector
+
+        # if the first vector has fewer coords, set length to first vec length
+        elif len(self.vector) <= len(other.vector):
+            length = len(self.vector)
+
+        # otherwise take other vectors length
+        else:
+            length = len(other.vector)
+
+        # if it passes both previous tests, do dot product
+        dotProduct = 0
+        for i in range(length):
+            dotProduct += self.vector[i] * other.vector[i]
+
+        return dotProduct
+
     # --- ends here
