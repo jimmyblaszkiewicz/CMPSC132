@@ -1723,4 +1723,125 @@ Subclass inherits from the superclass</li>
 </tr>
 </tbody>
 </table>
-<p>Table: Pros and Cons of Recursion</p></article></body></html>
+<p>Table: Pros and Cons of Recursion</p>
+<hr />
+<h6 id="10118">10/1/18<a class="headerlink" href="#10118" title="Permanent link"></a></h6>
+<h1 id="abstract-data-types">Abstract Data Types<a class="headerlink" href="#abstract-data-types" title="Permanent link"></a></h1>
+<p>Abstract Data types are logical descriptions of how we view the data and the operations that are allowed without regard to how they will be implemented</p>
+<p>We are only concerned with what the data is representing and not with how it will eventually be constructed.</p>
+<h3 id="data-structure">Data Structure<a class="headerlink" href="#data-structure" title="Permanent link"></a></h3>
+<ul>
+<li>A data structure is the implementation of an abstract data type that requires a physical view of the data using some collection of programming constructs and primitive data types</li>
+<li>A way of organizing and storing data so that <em>operations</em> can be performed efficiently<ul>
+<li>inserting</li>
+<li>deleting</li>
+<li>accessing</li>
+<li>finding</li>
+<li>sorting&hellip;</li>
+</ul>
+</li>
+<li>not all of them perform super efficiently</li>
+</ul>
+<h3 id="memory-allocation">Memory Allocation<a class="headerlink" href="#memory-allocation" title="Permanent link"></a></h3>
+<p>Not a nice huge chunk of memory where everything is right next to eachother</p>
+<ul>
+<li>something links the memory blocks together for a list</li>
+</ul>
+<h3 id="nodes">Nodes<a class="headerlink" href="#nodes" title="Permanent link"></a></h3>
+<ul>
+<li>value|next------&gt; value|next ------&gt; value|next -------&gt; value|next</li>
+<li>each value|next is a <code>Node</code></li>
+</ul>
+<div class="codehilite"><pre><span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="bp">None</span>
+</pre></div>
+
+<div class="codehilite"><pre><span class="c1"># set up the main list</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">=</span><span class="n">Node</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="o">=</span><span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">=</span><span class="n">Node</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">=</span><span class="n">Node</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span class="c1"># connect the Nodes</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="o">.</span><span class="n">next</span><span class="o">=</span><span class="n">d</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">next</span><span class="o">=</span><span class="n">c</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">next</span><span class="o">=</span><span class="n">a</span>
+</pre></div>
+
+<div class="codehilite"><pre><span class="c1"># now everything is connected, now we should print out the &#39;list&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">current</span> <span class="o">=</span> <span class="n">b</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="n">current</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span> <span class="s">&#39; &#39;</span><span class="p">)</span>
+<span class="o">...</span>     <span class="n">current</span><span class="o">=</span><span class="n">current</span><span class="o">.</span><span class="n">next</span>
+<span class="o">...</span>
+<span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span> <span class="mi">8</span>
+</pre></div>
+
+<h2 id="linked-lists">Linked Lists<a class="headerlink" href="#linked-lists" title="Permanent link"></a></h2>
+<h3 id="linear-structures">Linear Structures<a class="headerlink" href="#linear-structures" title="Permanent link"></a></h3>
+<ul>
+<li>Stacks queues and linked lists are examples of data collections whose items are ordered depending on how they are added or removed</li>
+<li>Linear structures can be though of as having two ends, sometimes these ends are the &lsquo;left&rsquo; and &lsquo;right&rsquo; or sometimes the &lsquo;head&rsquo; and &lsquo;tail&rsquo;</li>
+<li>What distinguishes one from the other is the way in which items are added and removed, in particular the location where these additions and removals occur.</li>
+<li>These variations give rise to some of the most useful data structures in computer science. they appear in many algorithms and can be used to solve a variety of important problems.</li>
+</ul>
+<h5 id="linked-lists_1">Linked Lists:<a class="headerlink" href="#linked-lists_1" title="Permanent link"></a></h5>
+<ul>
+<li>An array-based sequence is a collection of items where each item holds a <strong>relative</strong> position with respect to others</li>
+</ul>
+<div class="codehilite"><pre><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">85</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">76</span><span class="p">]</span>
+<span class="c1"># how do we insert a number between scores?</span>
+</pre></div>
+
+<ul>
+<li>
+<p>Insertions and deletions at interior positions of an array-based sequence are expensive</p>
+</li>
+<li>
+<p>Linked lists provide an alternative to an array-based sequence. Both array-based sequences and linked lists keep elements in a certain order, but using a very different style</p>
+</li>
+<li>
+<p>If a <code>Node</code> is a &lsquo;tail&rsquo; make sure the <code>next</code> of that <code>Node</code> is <code>None</code></p>
+</li>
+<li>
+<p>Insert by unlinking <code>next</code> for two pointers and creating a new <code>Node</code> with appropriate <code>next</code> value</p>
+</li>
+<li>
+<p>just update pointers instead of modifying many, many <code>Nodes</code></p>
+</li>
+</ul>
+<h3 id="singly-linked-list">Singly Linked List<a class="headerlink" href="#singly-linked-list" title="Permanent link"></a></h3>
+<h6 id="the-good">The Good<a class="headerlink" href="#the-good" title="Permanent link"></a></h6>
+<ul>
+<li>linked list nodes can live anywhere in the memory.</li>
+<li>as long as the references are updated, each linked list node can be flexibly moved to a different address</li>
+<li>may change in size</li>
+</ul>
+<h6 id="the-bad">The Bad<a class="headerlink" href="#the-bad" title="Permanent link"></a></h6>
+<ul>
+<li>have linear look up time</li>
+<li>when looking for a value in a linked list, you have to start from the beginning of the chain, and check one element at a time for a value you are looking for</li>
+</ul>
+<h5 id="implementation">Implementation:<a class="headerlink" href="#implementation" title="Permanent link"></a></h5>
+<div class="codehilite"><pre><span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="k">class</span> <span class="nc">LinkedList</span><span class="p">:</span>
+   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="bp">None</span>
+      <span class="c1"># notably, only has reference to the first element</span>
+      <span class="c1"># no need to store entire contents of the list somehow</span>
+      <span class="c1"># just need the start of the &#39;chain&#39;</span>
+
+   <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+      <span class="n">new_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+      <span class="n">new_node</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">,</span> <span class="n">new_node</span>
+      <span class="c1"># adds to the top of the list</span>
+      <span class="c1"># (new node becomes the head)</span>
+      <span class="c1"># (old head becomes the &#39;next&#39; for the newly added head)</span>
+</pre></div></article></body></html>

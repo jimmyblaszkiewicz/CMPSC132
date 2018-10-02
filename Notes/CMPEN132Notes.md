@@ -600,3 +600,124 @@ def fibi(n):
 |sequence generation easier | hard to debug             |
 
 Table: Pros and Cons of Recursion
+
+---
+
+###### 10/1/18
+# Abstract Data Types
+ Abstract Data types are logical descriptions of how we view the data and the operations that are allowed without regard to how they will be implemented
+ 
+ We are only concerned with what the data is representing and not with how it will eventually be constructed.
+
+### Data Structure
+   - A data structure is the implementation of an abstract data type that requires a physical view of the data using some collection of programming constructs and primitive data types
+   - A way of organizing and storing data so that _operations_ can be performed efficiently
+      + inserting
+      + deleting
+      + accessing
+      + finding
+      + sorting...
+   - not all of them perform super efficiently
+
+### Memory Allocation
+Not a nice huge chunk of memory where everything is right next to eachother
+
+   - something links the memory blocks together for a list
+
+### Nodes
+   - value|next------> value|next ------> value|next -------> value|next
+   - each value|next is a `Node`
+
+```python
+class Node:
+   def __init__(self, value):
+      self.value = value
+      self.next = None
+
+```
+
+```python
+# set up the main list
+>>> a=Node(8)
+>>> b=Node(2)
+>>> c=Node(6)
+>>> d=Node(4)
+```
+
+```python
+# connect the Nodes
+>>> b.next=d
+>>> d.next=c
+>>> c.next=a
+```
+
+```python
+# now everything is connected, now we should print out the 'list'
+>>> current = b
+>>> while current:
+...     print(current.value, end= ' ')
+...     current=current.next
+...
+2 4 6 8
+
+```
+
+##Linked Lists
+### Linear Structures
+   - Stacks queues and linked lists are examples of data collections whose items are ordered depending on how they are added or removed
+   - Linear structures can be though of as having two ends, sometimes these ends are the 'left' and 'right' or sometimes the 'head' and 'tail'
+   - What distinguishes one from the other is the way in which items are added and removed, in particular the location where these additions and removals occur.
+   - These variations give rise to some of the most useful data structures in computer science. they appear in many algorithms and can be used to solve a variety of important problems.
+
+#####Linked Lists:
+
+   - An array-based sequence is a collection of items where each item holds a **relative** position with respect to others
+
+```python
+scores = [85, 98, 50, 99, 76]
+# how do we insert a number between scores?
+```
+
+   - Insertions and deletions at interior positions of an array-based sequence are expensive
+
+   - Linked lists provide an alternative to an array-based sequence. Both array-based sequences and linked lists keep elements in a certain order, but using a very different style
+
+   - If a `Node` is a 'tail' make sure the `next` of that `Node` is `None`
+
+   - Insert by unlinking `next` for two pointers and creating a new `Node` with appropriate `next` value
+
+   - just update pointers instead of modifying many, many `Nodes`
+
+### Singly Linked List
+###### The Good
+   - linked list nodes can live anywhere in the memory.
+   - as long as the references are updated, each linked list node can be flexibly moved to a different address
+   - may change in size
+
+###### The Bad
+   - have linear look up time
+   - when looking for a value in a linked list, you have to start from the beginning of the chain, and check one element at a time for a value you are looking for
+
+#####Implementation:
+
+```python 
+class Node:
+   def __init__(self, value):
+      self.value = value
+      self.next = None
+
+class LinkedList:
+   def __init__(self):
+      self.head = None
+      # notably, only has reference to the first element
+      # no need to store entire contents of the list somehow
+      # just need the start of the 'chain'
+
+   def add(self, value):
+      new_node = Node(value)
+      new_node.next, self.head = self.head, new_node
+      # adds to the top of the list
+      # (new node becomes the head)
+      # (old head becomes the 'next' for the newly added head)
+
+```
