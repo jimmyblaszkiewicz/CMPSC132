@@ -1123,7 +1123,23 @@ def __str__(self):
     return &quot;Head:{}, Tail:{}\nList:{}&quot;.format(self.head, self.tail, out)
 
 
-__repr__ = __str__
+def __repr__(self):
+    current = self.head
+    out = []
+    while current:
+        out.append(str(current.value))
+        current =  current.next
+
+    out=&#39; &#39;.join(out)
+    return &quot;Head:{}, Tail:{}\nList:{}&quot;.format(self.head, self.tail, out)
+
+def __getitem__(self, value):
+    current = self.head
+    while current is not none:
+        if current.value == value:
+            return current
+
+    return None
 
 def __delitem__(self, value):
     # no items in list at all
@@ -1132,8 +1148,11 @@ def __delitem__(self, value):
 
     # one item in list
     if len(self) == 1:
-        self.head = None
-        self.tail = None
+        if self.head.value == value:
+            self.head = None
+            self.tail = None
+        else:
+            return &#39;Node is not in the list&#39;
 
     # multiple items in list
     else:
@@ -1164,7 +1183,8 @@ def __delitem__(self, value):
         # something in the middle of the list
         else:
             previous.next = current.next
-            self.length -= 1
+
+    self.length -= 1
 
 
 # add a node to the end of the list
@@ -1182,12 +1202,19 @@ def append(self, e):
     self.tail = new_node
     self. length += 1
 
-def delete_first(self):
-    if self.isEmpty:
-        return &#39;The list is empty&#39;
+def insert(self, after, value):
+    insert_after = self[after]
+    if insert_after is None:
+        return &#39;Item is not in list&#39;
 
-    self.head = self.head.next
-    self.length -= 1
+    newNode = Node(value)
+    newNode.next = insert_after.next
+    insert_after.next = newNode
+
+    if newNode.next is None:
+        self.tail = newNode
+
+    self.length += 1
 </pre></div>
 
 
@@ -1206,4 +1233,13 @@ def add_first(self, e):
 
     # set the new head to the new node
     self.head = new_node
-</pre></div></article></body></html>
+</pre></div>
+
+
+<p>if <strong>name</strong> == &lsquo;<strong>main</strong>&rsquo;:
+    x = LinkedList
+    x.append(Node(4))
+    x.add(Node(3))
+    x.add(Node(2))
+    x.append(Node(5))
+    print(&lsquo;Length = {}&rsquo;.format(x.length)</p></article></body></html>

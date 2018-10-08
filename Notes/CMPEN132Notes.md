@@ -723,7 +723,7 @@ class LinkedList:
 
 ```
 
-#####Implement Some Things
+#####Implementation of a Singly Linked List
 
    - `add(item)` adds a new item to beginning of the list
 
@@ -843,6 +843,11 @@ def append(self, e):
 ```
 
    - `insert(after, value)` adds new item after Node(after)
+
+```python
+
+```
+
    - `pop()` removes and returns the last item in the list
 
 

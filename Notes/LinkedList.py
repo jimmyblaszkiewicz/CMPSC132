@@ -56,33 +56,28 @@ class LinkedList:
             current_node = current_node.next
 
         return False
-        
-    def __str__(self):
-        current = self.head
-        out = []
-        while current:
-            out.append(str(current.value))
-            current =  current.next
-
-        out=' '.join(out)
-        return "Head:{}, Tail:{}\nList:{}".format(self.head, self.tail, out)
 
 
     def __repr__(self):
         current = self.head
+
         out = []
         while current:
             out.append(str(current.value))
-            current =  current.next
+            current = current.next
 
         out=' '.join(out)
         return "Head:{}, Tail:{}\nList:{}".format(self.head, self.tail, out)
 
+    __str__ = __repr__
+
     def __getitem__(self, value):
         current = self.head
-        while current is not none:
+
+        while current is not None:
             if current.value == value:
                 return current
+            current=current.next                
 
         return None
 
@@ -155,22 +150,26 @@ class LinkedList:
         newNode = Node(value)
         newNode.next = insert_after.next
         insert_after.next = newNode
-        
 
-class DoublyLinkedList:
-    def __init__(self):
-        self.head = None
+        if newNode.next is None:
+            self.tail = newNode
 
-    # add to beginning of list
-    def add_first(self, e):
-        new_node = Node(e)
-        # because its at the beginning next is the current head
-        new_node.next = self.head
+        self.length += 1
 
-        # change previous of head to the new_node to link backwards
-        if self.head is not None:
-            self.head.prev = new_node
 
-        # set the new head to the new node
-        self.head = new_node
+if __name__ == '__main__':
+    x = LinkedList()
+    x.append(4)
+    x.add(3)
+    x.add(2)
+    x.append(5)
 
+    print(x[2])
+    print(x)
+
+    del x[2]
+    print(x)
+
+    del x[5]
+    print(x)
+    print('Length = {}'.format(x.length))
