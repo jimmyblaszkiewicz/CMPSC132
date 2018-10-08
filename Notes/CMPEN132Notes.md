@@ -744,6 +744,51 @@ def add(self, value):
 ```
 
    - `delete(item)` removes the item from the list
+      + override `__delitem__`
+
+```python
+def __delitem__(self, value):
+   # no items in list at all
+   if self.isEmpty:
+      return 'List is empty'
+
+   # one item in list
+   if len(self) == 1:
+      self.head = None
+      self.tail = None
+
+   # multiple items in list
+   else:
+      current = self.head
+      previous = None
+      found = False
+
+      # walk through the list setting previous and current
+      while current is not None:
+          if current.value == value:
+              found = True
+              break
+          previous = current
+          current = current.next
+
+      # item not in the list
+      if not found:
+          return 'Node not in the list'
+
+      # if we are deleting the head
+      if previous == None:
+          self.head = current.next
+          current.next = None
+      # elif we are deleting the tail
+      elif current.next == None:
+          previous.next = None
+          self.tail = previous
+      # something in the middle of the list
+      else:
+          previous.next = current.next
+          self.length -= 1
+```
+
    - `search(item)` finds an item in the list and returns boolean
       + override `__contains__` also
 
@@ -780,7 +825,23 @@ def size(self):
    return self.length
 ```
 
-   - `append(item)` adds a new item to the end of the list
+   - `append(item)` adds a new item to the end of the list, returns nothing
+
+```python
+def append(self, e):
+   new_node = Node(e)
+   if self.isEmpty:
+      self.head = new_node
+      self.tail = new_node
+      self.length += 1
+      return
+# of node is not empty
+# set new node to be the next of whatever the current final node is
+   self.tail.next = new_node
+   self.tail = new_node
+   self.length += 1
+```
+
    - `insert(after, value)` adds new item after Node(after)
    - `pop()` removes and returns the last item in the list
 

@@ -1866,7 +1866,54 @@ Subclass inherits from the superclass</li>
 </pre></div>
 
 <ul>
-<li><code>delete(item)</code> removes the item from the list</li>
+<li><code>delete(item)</code> removes the item from the list<ul>
+<li>override <code>__delitem__</code></li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+   <span class="c1"># no items in list at all</span>
+   <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">:</span>
+      <span class="k">return</span> <span class="s">&#39;List is empty&#39;</span>
+
+   <span class="c1"># one item in list</span>
+   <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="bp">None</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="bp">None</span>
+
+   <span class="c1"># multiple items in list</span>
+   <span class="k">else</span><span class="p">:</span>
+      <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+      <span class="n">previous</span> <span class="o">=</span> <span class="bp">None</span>
+      <span class="n">found</span> <span class="o">=</span> <span class="bp">False</span>
+
+      <span class="c1"># walk through the list setting previous and current</span>
+      <span class="k">while</span> <span class="n">current</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+          <span class="k">if</span> <span class="n">current</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
+              <span class="n">found</span> <span class="o">=</span> <span class="bp">True</span>
+              <span class="k">break</span>
+          <span class="n">previous</span> <span class="o">=</span> <span class="n">current</span>
+          <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">next</span>
+
+      <span class="c1"># item not in the list</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
+          <span class="k">return</span> <span class="s">&#39;Node not in the list&#39;</span>
+
+      <span class="c1"># if we are deleting the head</span>
+      <span class="k">if</span> <span class="n">previous</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">next</span>
+          <span class="n">current</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="bp">None</span>
+      <span class="c1"># elif we are deleting the tail</span>
+      <span class="k">elif</span> <span class="n">current</span><span class="o">.</span><span class="n">next</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+          <span class="n">previous</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="bp">None</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="n">previous</span>
+      <span class="c1"># something in the middle of the list</span>
+      <span class="k">else</span><span class="p">:</span>
+          <span class="n">previous</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">next</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+
+<ul>
 <li><code>search(item)</code> finds an item in the list and returns boolean<ul>
 <li>override <code>__contains__</code> also</li>
 </ul>
@@ -1908,7 +1955,23 @@ Subclass inherits from the superclass</li>
 </pre></div>
 
 <ul>
-<li><code>append(item)</code> adds a new item to the end of the list</li>
+<li><code>append(item)</code> adds a new item to the end of the list, returns nothing</li>
+</ul>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+   <span class="n">new_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+   <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">new_node</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="n">new_node</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">+=</span> <span class="mi">1</span>
+      <span class="k">return</span>
+<span class="c1"># of node is not empty</span>
+<span class="c1"># set new node to be the next of whatever the current final node is</span>
+   <span class="bp">self</span><span class="o">.</span><span class="n">tail</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">new_node</span>
+   <span class="bp">self</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="n">new_node</span>
+   <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+
+<ul>
 <li><code>insert(after, value)</code> adds new item after Node(after)</li>
 <li><code>pop()</code> removes and returns the last item in the list</li>
 </ul></article></body></html>

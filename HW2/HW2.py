@@ -3,7 +3,8 @@
 ########################################
 #                                      
 # Name: James Blaszkiewicz
-# Collaboration Statement: I worked on this HW by myself using only the class materials.             
+# Collaboration Statement: I worked on this HW by myself using only the 
+# class materials.             
 #
 ########################################
 
