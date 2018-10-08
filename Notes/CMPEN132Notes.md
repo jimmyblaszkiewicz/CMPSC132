@@ -709,9 +709,10 @@ class Node:
 class LinkedList:
    def __init__(self):
       self.head = None
-      # notably, only has reference to the first element
+      self.tail = None
+      # notably, only has reference to the first/last element
       # no need to store entire contents of the list somehow
-      # just need the start of the 'chain'
+      # just need the start and end of the 'chain'
 
    def add(self, value):
       new_node = Node(value)
@@ -721,3 +722,66 @@ class LinkedList:
       # (old head becomes the 'next' for the newly added head)
 
 ```
+
+#####Implement Some Things
+
+   - `add(item)` adds a new item to beginning of the list
+
+```python
+def add(self, value):
+   new_node = Node(value)
+
+   if self.isEmpty:
+      self.head = new_node
+      self.tail = new_node
+      self.length = 1
+
+   else:
+      new_node.next = self.head
+      self.head = new_node
+      self.length += 1
+
+```
+
+   - `delete(item)` removes the item from the list
+   - `search(item)` finds an item in the list and returns boolean
+      + override `__contains__` also
+
+```python
+def __contains__(self, value):
+   current_node = self.head
+   while current_node is not None:
+      if current_node.value == value:
+         return True
+      current_node = current_node.next
+
+   return False
+```
+
+   - `isEmpty` tests if list is empty, needs no params and returns bool
+      + property
+
+```python
+@property
+def isEmpty(self):
+   # if list is empty then there is no head
+   return self.head == None:
+
+```
+
+   - `size` returns number of items in the list
+      + override `__len__` method as well
+
+```python
+def __len__(self):
+   return self.length
+
+def size(self):
+   return self.length
+```
+
+   - `append(item)` adds a new item to the end of the list
+   - `insert(after, value)` adds new item after Node(after)
+   - `pop()` removes and returns the last item in the list
+
+

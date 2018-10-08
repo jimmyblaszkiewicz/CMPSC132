@@ -43,7 +43,7 @@ class EncryptTestCase(unittest.TestCase):
     def test_multiply_then_add(self):
         self.assertEqual(calculator('2*2+1'), 5)
     def test_multiply_then_sub(self):
-        self.assertEqual(calculator('2*2-5'),-1)
+        self.assertEqual(calculator('2*2-5'), -1)
 
     def test_add_then_multiply(self):
         self.assertEqual(calculator('2+2*4'), 10)
@@ -56,15 +56,16 @@ class EncryptTestCase(unittest.TestCase):
         self.assertEqual(calculator('2-2/4'), 1.5)
 
     def test_mixed_one(self):
-        self.assertEqual(calculator('-4 +3 -2 / 2'), -2)
+        self.assertEqual(calculator('4*3-2/2'), 11)
     def test_mixed_two(self):
         self.assertEqual(round(calculator('23 / 12 - 223 + 5.25 * 4 * 3423'), 4), 71661.9167)
     def test_mixed_three(self):
-        self.assertEqual(calculator('2 - 3*4'), -10)
+        self.assertEqual(calculator('-2 - 3*4'), -14)
     def test_mixed_four(self):
-        # line in calculator has ambiguous notation
-        # evaluates as ((4*2)/2)*6
-        self.assertEqual(round(calculator('4*2/2*6'), 4), 24)
+        self.assertEqual(round(calculator('-4 * 2/2*6'), 4), -24)
+
+    def test_starts_with_negative_then_div(self):
+        self.assertEqual(calculator('-28.0  / 4 * 4'), -28)
     
 
     def test_error_lineA(self):

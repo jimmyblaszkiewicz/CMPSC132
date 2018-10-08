@@ -12,4 +12,7 @@ class EncryptTestCase(unittest.TestCase):
     def test_recursive_triangle_4(self):
         self.assertEqual(recursive_triangle(4,4), '****\n ***\n  **\n   *')
 
+    def test_k_greater_than_n(self):
+        self.assertEqual(recursive_triangle(5,4), '*****\n****\n ***\n  **\n   *')
+
 if __name__ == '__main__':unittest.main(exit=False)

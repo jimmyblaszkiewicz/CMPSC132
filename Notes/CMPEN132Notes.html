@@ -1834,9 +1834,10 @@ Subclass inherits from the superclass</li>
 <span class="k">class</span> <span class="nc">LinkedList</span><span class="p">:</span>
    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="bp">None</span>
-      <span class="c1"># notably, only has reference to the first element</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="bp">None</span>
+      <span class="c1"># notably, only has reference to the first/last element</span>
       <span class="c1"># no need to store entire contents of the list somehow</span>
-      <span class="c1"># just need the start of the &#39;chain&#39;</span>
+      <span class="c1"># just need the start and end of the &#39;chain&#39;</span>
 
    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
       <span class="n">new_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
@@ -1844,4 +1845,70 @@ Subclass inherits from the superclass</li>
       <span class="c1"># adds to the top of the list</span>
       <span class="c1"># (new node becomes the head)</span>
       <span class="c1"># (old head becomes the &#39;next&#39; for the newly added head)</span>
-</pre></div></article></body></html>
+</pre></div>
+
+<h5 id="implement-some-things">Implement Some Things<a class="headerlink" href="#implement-some-things" title="Permanent link"></a></h5>
+<ul>
+<li><code>add(item)</code> adds a new item to beginning of the list</li>
+</ul>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+   <span class="n">new_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+   <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">new_node</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="n">new_node</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">1</span>
+
+   <span class="k">else</span><span class="p">:</span>
+      <span class="n">new_node</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">new_node</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+
+<ul>
+<li><code>delete(item)</code> removes the item from the list</li>
+<li><code>search(item)</code> finds an item in the list and returns boolean<ul>
+<li>override <code>__contains__</code> also</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+   <span class="n">current_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+   <span class="k">while</span> <span class="n">current_node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">current_node</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
+         <span class="k">return</span> <span class="bp">True</span>
+      <span class="n">current_node</span> <span class="o">=</span> <span class="n">current_node</span><span class="o">.</span><span class="n">next</span>
+
+   <span class="k">return</span> <span class="bp">False</span>
+</pre></div>
+
+<ul>
+<li><code>isEmpty</code> tests if list is empty, needs no params and returns bool<ul>
+<li>property</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span class="nd">@property</span>
+<span class="k">def</span> <span class="nf">isEmpty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+   <span class="c1"># if list is empty then there is no head</span>
+   <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+</pre></div>
+
+<ul>
+<li><code>size</code> returns number of items in the list<ul>
+<li>override <code>__len__</code> method as well</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+   <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span>
+
+<span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+   <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span>
+</pre></div>
+
+<ul>
+<li><code>append(item)</code> adds a new item to the end of the list</li>
+<li><code>insert(after, value)</code> adds new item after Node(after)</li>
+<li><code>pop()</code> removes and returns the last item in the list</li>
+</ul></article></body></html>

@@ -72,7 +72,7 @@ def isNumber(txt):
         return True
 
     # if it doesn't work, txt is not a number
-    except ValueError as e:
+    except:
         return False
 
     # ---  CODE ENDS HERE
@@ -217,55 +217,46 @@ def calculator(expr):
         # no operator error detected in getNextNumber, handled here
         elif oprPos == -1:
             return 'error: no operator between numbers'
-        # if no more numbers, no more operators, => at the end of sequence
-        # if mode is add just return addResult (multiplication already handled)
-        elif newNumber is None and newOpr is None and mode == 'add':
-            return exeOpr(addResult, addLastOpr, mulResult)
-
-        # elif mode is mul then add/subtract addResult and return
-        elif newNumber is None and newOpr is None and mode == 'mul':
-            return exeOpr(mulResult, addLastOpr, addResult)
-
-        # two operators with no number between raises error message
-        elif newNumber is None and newOpr is not None:
-            return 'error: too many operators'
-
-        # there is a new number, but no more operators, so just finish
-        # whatever mode is
-        elif newOpr is None and mode == 'add':
-            return exeOpr(addResult, opr, newNumber)
-        elif newOpr is None and mode == 'mul':
-            return exeOpr(addResult, addLastOpr, exeOpr(mulResult, opr, newNumber))
         
-        # if operator matches mode, evaluate previous calculation
-        elif (newOpr == '+' or newOpr == '-') and mode == 'add':
-            addResult = exeOpr(addResult, opr, newNumber)
-        elif (newOpr == '*' or newOpr == '/') and mode == 'mul':
+        if newNumber == None:
+            return 'error: no operator between numbers'
+
+        elif mode == 'add':
+            if newOpr == None:
+                # finish calculation in add mode
+                return exeOpr(addResult, opr, newNumber)
+            elif newOpr == '+' or newOpr == '-':
+                # if we still have operators, finish previous calculation
+                addResult = exeOpr(addResult, opr, newNumber)
+            elif newOpr == '/' or newOpr == '*':
+                # changing modes to multiplication
+                mode = 'mul'
+                # mul result = new num because if we're in add mode, 
+                # any previous mulResult should have been stored in addResult
+                mulResult = newNumber
+                # store previous operator to addLastOpr for if we switch back again
+                addLastOpr = opr
+
+        elif mode == 'mul':
+            # just multiply right away, dont need to save anything except in mulResult
             mulResult = exeOpr(mulResult, opr, newNumber)
-
-
-        # if operator does not match mode...
-        
-        elif (newOpr == '+' or newOpr == '-') and mode == 'mul':
-            # change mode to add
-            mode = 'add'
-            # first calculate multiplication with nested exeOpr
-            # then addLastOpr the result of mul with addResult
-            addResult = exeOpr(exeOpr(mulResult, opr, newNumber), addLastOpr, addResult) 
-            addLastOpr = newOpr
-        elif (newOpr == '*' or newOpr == '/') and mode == 'add':
-            # change mode to mul
-            mode = 'mul'
-            # set addLastOpr to opr
-            addLastOpr = opr
-            mulResult = newNumber
             
+            if newOpr is None:
+                # finish addition bc no more operators
+                return exeOpr(addResult, addLastOpr, mulResult)
+
+            # if mode changes back to add
+            elif newOpr == '+' or newOpr == '-':
+                # set mode to add
+                mode == 'add'
+                # update addResult with its add/sub to mulResult
+                addResult = exeOpr(addResult, addLastOpr, mulResult)
 
 
         # update pos and opr with current values
-        if oprPos is not None:
-            pos = oprPos+1
-            opr = newOpr
+        # if oprPos is not None:
+        pos = oprPos+1
+        opr = newOpr
         
 
 
