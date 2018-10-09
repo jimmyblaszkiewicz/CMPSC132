@@ -74,5 +74,8 @@ class EncryptTestCase(unittest.TestCase):
         self.assertEqual(calculator('+'), 'input error line B: calculator')
     def test_error_ends_in_operator(self):
         self.assertEqual(calculator('3 + 2 -4 *10 +'), 'error: line ends in operator')
+    def test_too_many_numbers(self):
+        self.assertEqual(calculator('2 3 4 54 +1'), 'error: no operator between numbers')
 
+        
 if __name__ == '__main__':unittest.main(exit=False)

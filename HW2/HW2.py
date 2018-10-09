@@ -25,23 +25,10 @@ def findNextOpr(txt):
         return "type error: findNextOpr"
 
     # --- YOU CODE STARTS HERE
-    operators = ['+', '-', '/', '*']
-
-    # loop through txt and find first character in operators
-    # return index or -1 if not found
-    for i in range(len(txt)):
-        if txt[i] in operators:
-            return i
-
-    return -1
-
-    # list of operators and minimum index variable initialization
     
-
-    '''
     # set mindex to length of txt because no valid index will be greater than that 
     mindex = len(txt)
-
+    operators = ['+', '-', '*', '/']
     for i in range(len(operators)):
         nextOper = txt.find(operators[i])
 
@@ -54,7 +41,7 @@ def findNextOpr(txt):
 
     # if no operators found, ret -1, otherwise ret mindex
     return -1 if mindex == len(txt) else mindex
-    '''
+    
     # ---  CODE ENDS HERE
 
 
@@ -109,25 +96,7 @@ def getNextNumber(expr, pos):
     if len(expr)==0 or not isinstance(expr, str) or pos<0 or pos>=len(expr) or not isinstance(pos, int):
         return None, None, "type error: getNextNumber"
     # --- YOU CODE STARTS HERE
-    
-    newOpr = None
-    newNumberStr = None
 
-    oprPos = findNextOpr(expr[pos:])
-    if oprPos != -1 and isNumber(oprPos):
-        oprPos += pos
-        newOpr = expr[oprPos]
-        newNumberStr = expr[pos:oprPos]
-    else:
-        newOpr = None 
-        oprPos = None
-        newNumberStr = expr[pos:]
-
-    if isNumber(newNumberStr):
-        return float(newNumberStr), newOpr, oprPos
-
-    return None, newOpr, oprPos
-    '''
     # set remaining txt variable
     remaining = expr[pos:]
     # initialize to None so that if they are not changed, they return correctly
@@ -162,7 +131,7 @@ def getNextNumber(expr, pos):
         nextOprPos = -1
 
     return (nextNum, nextOpr, nextOprPos)
-    '''
+    
 
 
 
@@ -246,9 +215,9 @@ def calculator(expr):
         # handle if final character (w/o spaces) is an operator
         if expr.strip()[-1] in '+-/*':
             return 'error: line ends in operator'
-
-        # if there is no newNumber, there are two continuous operators
-        if newNumber == None:
+        
+        # catch error two numbers with no operator from getNextNumber sentinel
+        elif oprPos == -1:
             return 'error: no operator between numbers'
 
         elif mode == 'add':
@@ -296,5 +265,3 @@ def calculator(expr):
 
 
     # ---  CODE ENDS HERE
-if __name__ == '__main__':
-    print(calculator("2*3-4"))
