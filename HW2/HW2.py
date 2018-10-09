@@ -25,10 +25,18 @@ def findNextOpr(txt):
         return "type error: findNextOpr"
 
     # --- YOU CODE STARTS HERE
+    operators = ['+', '-', '/', '*']
+    
+    for i in range(len(txt)):
+        if txt[i] in operators:
+            return i
+
+    return -1
 
     # list of operators and minimum index variable initialization
-    operators = ['+', '-', '/', '*']
+    
 
+    '''
     # set mindex to length of txt because no valid index will be greater than that 
     mindex = len(txt)
 
@@ -44,7 +52,7 @@ def findNextOpr(txt):
 
     # if no operators found, ret -1, otherwise ret mindex
     return -1 if mindex == len(txt) else mindex
-
+    '''
     # ---  CODE ENDS HERE
 
 
