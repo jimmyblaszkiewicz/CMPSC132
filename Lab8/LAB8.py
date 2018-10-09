@@ -2,8 +2,9 @@
 #Due Date: 10/12/2018, 11:59PM
 ########################################
 #                                      
-# Name:
-# Collaboration Statement:             
+# Name: James Blaszkiewicz
+# Collaboration Statement: I worked on this program by myself 
+# using only the class materials             
 #  
 ########################################
 
@@ -46,6 +47,10 @@ class OrderedLinkedList:
     def __init__(self):
         self.head=None
         self.tail=None
+        # add new attribute length to avoid looping through entire
+        # list every time we need the length
+        self.length = 0
+
 
     def __str__(self):
         temp=self.head
@@ -58,15 +63,58 @@ class OrderedLinkedList:
 
     __repr__=__str__
 
+    
     def add(self, value):
-        #write your code here
+        # write your code here
+        new_node = Node(value)
+        # if list is empty, just add new node as head and tail
+        if self.isEmpty:
+            self.head = new_node
+            self.tail = new_node
+
+        else:
+            # otherwise set current head to be new_node.next
+            # and make new_node the new head
+            new_node.next = self.head
+            self.head = new_node
+
+        self.length += 1
+
     
     def pop(self):
-        #write your code here
+        # write your code here
+        # if the list is empty, give error message
+        if self.isEmpty:
+            return 'List is empty'
 
+        current = self.head
+        previous = None
+
+        while current:
+            # if we reach the end of the list
+            if self.tail == current:
+                # remove current from previous.next and break
+                previous.next = None
+                break
+
+            # increment previous and current
+            previous = current
+            current = current.next
+
+        self.length -= 1
+        return current
+
+
+    @property
     def isEmpty(self):
-        #write your code here
+        # write your code here
+        # if self.head is None - the list is empty
+        # otherwise it is not
+        return self.head is None
         
 
     def __len__(self):
-        #write your code here
+        # write your code here
+        # use class attribute rather than looping through entire list
+        # self.length maintained in other methods
+        return self.length
