@@ -43,7 +43,7 @@ class EncryptTestCase(unittest.TestCase):
     def test_multiply_then_add(self):
         self.assertEqual(calculator('2*2+1'), 5)
     def test_multiply_then_sub(self):
-        self.assertEqual(calculator('2*2-5'), -1)
+        self.assertEqual(calculator('-2*2-5'), -9)
 
     def test_add_then_multiply(self):
         self.assertEqual(calculator('2+2*4'), 10)
@@ -72,8 +72,6 @@ class EncryptTestCase(unittest.TestCase):
         self.assertEqual(calculator(""), 'input error line A: calculator')
     def test_error_lineB(self):
         self.assertEqual(calculator('+'), 'input error line B: calculator')
-    def test_error_no_operator_between_numbers(self):
-        self.assertEqual(calculator('4 3 +2'), 'error: no operator between numbers')
     def test_error_ends_in_operator(self):
         self.assertEqual(calculator('3 + 2 -4 *10 +'), 'error: line ends in operator')
 

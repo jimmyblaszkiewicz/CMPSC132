@@ -26,7 +26,9 @@ def findNextOpr(txt):
 
     # --- YOU CODE STARTS HERE
     operators = ['+', '-', '/', '*']
-    
+
+    # loop through txt and find first character in operators
+    # return index or -1 if not found
     for i in range(len(txt)):
         if txt[i] in operators:
             return i
@@ -108,6 +110,24 @@ def getNextNumber(expr, pos):
         return None, None, "type error: getNextNumber"
     # --- YOU CODE STARTS HERE
     
+    newOpr = None
+    newNumberStr = None
+
+    oprPos = findNextOpr(expr[pos:])
+    if oprPos != -1 and isNumber(oprPos):
+        oprPos += pos
+        newOpr = expr[oprPos]
+        newNumberStr = expr[pos:oprPos]
+    else:
+        newOpr = None 
+        oprPos = None
+        newNumberStr = expr[pos:]
+
+    if isNumber(newNumberStr):
+        return float(newNumberStr), newOpr, oprPos
+
+    return None, newOpr, oprPos
+    '''
     # set remaining txt variable
     remaining = expr[pos:]
     # initialize to None so that if they are not changed, they return correctly
@@ -142,7 +162,7 @@ def getNextNumber(expr, pos):
         nextOprPos = -1
 
     return (nextNum, nextOpr, nextOprPos)
-
+    '''
 
 
 
@@ -159,7 +179,10 @@ def exeOpr(num1, opr, num2):
     elif opr=="*":
         return num1*num2
     elif opr=="/":
-        return num1/num2
+        if num2 != 0:
+            return num1/num2
+        else:
+            return 'error: divide by zero'
     else:
         return "error in exeOpr"
 
@@ -218,15 +241,13 @@ def calculator(expr):
     while True:
         # --- YOU CODE STARTS HERE
         # get newNumber, newOpr, oprPos
-        
         newNumber, newOpr, oprPos = getNextNumber(expr, pos)
+        
+        # handle if final character (w/o spaces) is an operator
         if expr.strip()[-1] in '+-/*':
             return 'error: line ends in operator'
 
-        # no operator error detected in getNextNumber, handled here
-        elif oprPos == -1:
-            return 'error: no operator between numbers'
-        
+        # if there is no newNumber, there are two continuous operators
         if newNumber == None:
             return 'error: no operator between numbers'
 
@@ -237,10 +258,10 @@ def calculator(expr):
             elif newOpr == '+' or newOpr == '-':
                 # if we still have operators, finish previous calculation
                 addResult = exeOpr(addResult, opr, newNumber)
-            elif newOpr == '/' or newOpr == '*':
+            elif newOpr == '*' or newOpr == '/':
                 # changing modes to multiplication
                 mode = 'mul'
-                # mul result = new num because if we're in add mode, 
+                # mul result = new num because if we're already in add mode, 
                 # any previous mulResult should have been stored in addResult
                 mulResult = newNumber
                 # store previous operator to addLastOpr for if we switch back again
@@ -257,13 +278,13 @@ def calculator(expr):
             # if mode changes back to add
             elif newOpr == '+' or newOpr == '-':
                 # set mode to add
-                mode == 'add'
+                mode = 'add'
                 # update addResult with its add/sub to mulResult
                 addResult = exeOpr(addResult, addLastOpr, mulResult)
 
 
         # update pos and opr with current values
-        # if oprPos is not None:
+
         pos = oprPos+1
         opr = newOpr
         
@@ -275,3 +296,5 @@ def calculator(expr):
 
 
     # ---  CODE ENDS HERE
+if __name__ == '__main__':
+    print(calculator("2*3-4"))
