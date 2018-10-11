@@ -28,7 +28,7 @@ def findNextOpr(txt):
     
     # set mindex to length of txt because no valid index will be greater than that 
     mindex = len(txt)
-    operators = ['+', '-', '*', '/']
+    operators = ['+', '-', '*', '/', '^']
     for i in range(len(operators)):
         nextOper = txt.find(operators[i])
 
@@ -205,12 +205,22 @@ def calculator(expr):
         return newNumber
     elif newOpr=="+" or newOpr=="-":
         mode="add"
-        addResult=newNumber     #value so far in the addition mode     
+        addResult=newNumber     #value so far in the addition mode   
+        mulLastOpr=None  # no multiplication so far
+        mulResult=0
     elif newOpr=="*" or newOpr=="/":
         mode="mul"
         addResult=0
         mulResult=newNumber     #value so far in the mulplication mode
         addLastOpr = "+"
+        mulLastOpr = newOpr
+    elif newOpr=='^':
+        mode='exp'
+        addResult=0
+        mulResult=0
+        addLastOpr = '+'
+        mulLastOpr=None
+        base = newNumber # store base of exponentiation
     pos=oprPos+1                #the new current position
     opr=newOpr                  #the new current operator
     
@@ -221,7 +231,7 @@ def calculator(expr):
         newNumber, newOpr, oprPos = getNextNumber(expr, pos)
         
         # handle if final character (w/o spaces) is an operator
-        if expr.strip()[-1] in '+-/*':
+        if expr.strip()[-1] in '+-/*^':
             return 'error: line ends in operator'
         
         # catch error two numbers with no operator from getNextNumber sentinel
@@ -232,6 +242,10 @@ def calculator(expr):
             return 'error: no number between operators'
 
         elif mode == 'add':
+            # dont need to store previous */ anymore bc everything stored in addRes
+            # when mode is changed to add
+            mulLastOpr = None
+
             if newOpr == None:
                 # finish calculation in add mode
                 return exeOpr(addResult, opr, newNumber)
@@ -246,33 +260,80 @@ def calculator(expr):
                 mulResult = newNumber
                 # store previous operator to addLastOpr for if we switch back again
                 addLastOpr = opr
+            elif newOpr == '^':
+                # changing mode to exponentiation
+                mode = 'exp'
+                addLastOpr = opr
+                base = newNumber
 
-        elif mode == 'mul':
-            # just multiply right away, dont need to save anything except in mulResult
-            mulResult = exeOpr(mulResult, opr, newNumber)
+        elif mode == 'mul':            
             
             if newOpr is None:
                 # finish addition bc no more operators
+                mulResult = exeOpr(mulResult, opr, newNumber)
                 return exeOpr(addResult, addLastOpr, mulResult)
+            # if mode does not change
+            elif newOpr == '*' or newOpr == '/':
+                mulResult = exeOpr(mulResult, opr, newNumber)
 
             # if mode changes back to add
             elif newOpr == '+' or newOpr == '-':
+                mulResult = exeOpr(mulResult, opr, newNumber)
                 # set mode to add
                 mode = 'add'
                 # update addResult with its add/sub to mulResult
+                mulLastOpr = opr
+                # store mulLastOpr in case of exponentiation
                 addResult = exeOpr(addResult, addLastOpr, mulResult)
+
+            elif newOpr == '^':
+                mode = 'exp'
+                mulLastOpr = opr
+                base = newNumber
+
+        elif mode == 'exp':
+            expResult = exeOpr(base, opr, newNumber)
+
+            if newOpr is None:
+                # if we multiplied and did not add after:
+                if mulLastOpr is not None:
+                    expResult = exeOpr(mulResult, mulLastOpr, expResult)
+                # return finished addition with finished multiplication
+                return exeOpr(addResult, addLastOpr, expResult)
+
+            elif newOpr == '+' or newOpr == '-':
+                mode = 'add' 
+                
+                # if we multiplied without adding after right before entering
+                # exponentiation
+                if mulLastOpr is not None:
+                    expResult = exeOpr(mulResult, mulLastOpr, expResult)
+
+                addResult = exeOpr(addResult, addLastOpr, expResult)
+
+            elif newOpr == '*' or newOpr == '/':
+                mode = 'mul'
+
+                # if we multiplied right before entering exponentiation
+                if mulLastOpr is not None:
+                    mulResult = exeOpr(mulResult, mulLastOpr, expResult)
+
+                else:
+                    # otherwise store expResult alone in mulResult
+                    mulResult = expResult
+                    # if we did not have this if/else, we would always multiply by zero
+                    # before switching to multiplication
+                    # ie 2^3 * 2 would result as 0 instead of 16
+
 
 
         # update pos and opr with current values
 
         pos = oprPos+1
         opr = newOpr
-        
-
-
-
-
-
-
+    
 
     # ---  CODE ENDS HERE
+
+'''if __name__ == '__main__':
+    print(calculator('2*1+2^3'))'''

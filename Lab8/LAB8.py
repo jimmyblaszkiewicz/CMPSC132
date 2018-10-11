@@ -59,11 +59,27 @@ class OrderedLinkedList:
             out.append(str(temp.value))
             temp=temp.next
         out=' '.join(out)
-        return ('Head:{}\nTail:{}\nList:{}'.format(self.head,self.tail,out))
+        return ('Head:{}\nTail:{}\nList:{}'.format(self.head, self.tail, out))
+
 
     __repr__=__str__
 
+
+    def __len__(self):
+        # write your code here
+        # use class attribute rather than looping through entire list
+        # self.length maintained in other methods
+        return self.length
+
     
+    @property
+    def isEmpty(self):
+        # write your code here
+        # if self.head is None - the list is empty
+        # otherwise it is not
+        return self.head is None
+
+
     def add(self, value):
         # write your code here
         new_node = Node(value)
@@ -71,19 +87,44 @@ class OrderedLinkedList:
         if self.isEmpty:
             self.head = new_node
             self.tail = new_node
+            return
 
-        else:
-            # otherwise set current head to be new_node.next
-            # and make new_node the new head
-            new_node.next = self.head
+        # otherwise find correct spot in current list
+        # new_node will be inserted before current and after previous
+        current = self.head
+        previous = None
+        while current:
+            if current.value > new_node.value:
+                # if we find a value greater than our new value
+                # stop looping
+                break
+            # increment current and previous
+            previous = current
+            current = current.next
+            
+
+        # insert new node before current head (previous is None)
+        if current == self.head:
             self.head = new_node
+            new_node.next = current
+        
+        # insert new node at the end of the list
+        # bc current is now past the tail (current is None)
+        elif previous == self.tail:
+            self.tail = new_node
+            previous.next = new_node
+
+        # otherwise put new node after previous and before current
+        else:
+            new_node.next = current
+            previous.next = new_node
 
         self.length += 1
 
     
     def pop(self):
         # write your code here
-        # if the list is empty, give error message
+        # if the list is empty, give message
         if self.isEmpty:
             return 'List is empty'
 
@@ -93,8 +134,16 @@ class OrderedLinkedList:
         while current:
             # if we reach the end of the list
             if self.tail == current:
-                # remove current from previous.next and break
+                # if the head is equal to the tail (1 item list)
+                if self.head == current:
+                    self.head = None
+                    self.tail = None
+                    break
+
+                # otherwise unlink current from previous.next
+                # set previous as new tail and break
                 previous.next = None
+                self.tail = previous
                 break
 
             # increment previous and current
@@ -102,19 +151,4 @@ class OrderedLinkedList:
             current = current.next
 
         self.length -= 1
-        return current
-
-
-    @property
-    def isEmpty(self):
-        # write your code here
-        # if self.head is None - the list is empty
-        # otherwise it is not
-        return self.head is None
-        
-
-    def __len__(self):
-        # write your code here
-        # use class attribute rather than looping through entire list
-        # self.length maintained in other methods
-        return self.length
+        return current.value

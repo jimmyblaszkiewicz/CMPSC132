@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body {
   max-width: 980px;
   border: 1px solid #ddd;
   outline: 1300px solid #fff;
@@ -1974,9 +1974,161 @@ Subclass inherits from the superclass</li>
 <ul>
 <li><code>insert(after, value)</code> adds new item after Node(after)</li>
 </ul>
-<div class="codehilite"><pre>
+<div class="codehilite"><pre><span class="c1"># todo: insert(after, value)</span>
 </pre></div>
 
 <ul>
 <li><code>pop()</code> removes and returns the last item in the list</li>
-</ul></article></body></html>
+</ul>
+<div class="codehilite"><pre><span class="c1"># todo: pop()</span>
+</pre></div>
+
+<h2 id="stack">Stack<a class="headerlink" href="#stack" title="Permanent link"></a></h2>
+<ul>
+<li>Collection of items where the addition of new items and removal of existing items always takes place at same end</li>
+</ul>
+<h4 id="basic-operations">Basic Operations:<a class="headerlink" href="#basic-operations" title="Permanent link"></a></h4>
+<ul>
+<li><code>push</code> adds element on top of stack</li>
+<li><code>pop</code> removes an element from the stack</li>
+<li><code>isEmpty</code> is <code>True</code> if stack is empty, otherwise <code>False</code></li>
+<li><code>peek</code> returns the top element of the stack without removing it</li>
+<li>
+<p><code>size</code> returns the number of items in the stack</p>
+</li>
+<li>
+<p>Elements are inserted and removed according to the LIFO(Last in, First out), FILO(First in, Last out) principle</p>
+</li>
+</ul>
+<h4 id="internally">Internally<a class="headerlink" href="#internally" title="Permanent link"></a></h4>
+<ul>
+<li>when we have a push operation, we update pointer for the top</li>
+<li>
+<p>when we pop, we return the top and update the pointer for the top</p>
+</li>
+<li>
+<p>say <em>s</em> is a stack that has been created with no elements in it</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pop</span><span class="p">()</span>
+<span class="s">&quot;Error: stack is empty&quot;</span>
+<span class="c1"># or return None</span>
+<span class="bp">None</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># create a new node with value of 4</span>
+<span class="c1"># new_node.next -&gt; None</span>
+<span class="c1"># point s.top at new_node</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># create a new node pointing to None w value 5</span>
+<span class="c1"># set new_node.next = top</span>
+<span class="c1"># set top = new_node</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="c1"># new_node(7)</span>
+<span class="c1"># new_node.next = top</span>
+<span class="c1"># top = new_node</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="c1"># popped = top</span>
+<span class="c1"># top = top.next</span>
+<span class="c1"># popped.next = None</span>
+<span class="c1"># return popped</span>
+</pre></div>
+
+<h4 id="implementation-using-a-list">Implementation using a List<a class="headerlink" href="#implementation-using-a-list" title="Permanent link"></a></h4>
+<div class="codehilite"><pre><span class="k">class</span> <span class="nc">Stack</span><span class="p">:</span>
+   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="c1"># todo: add from slides</span>
+</pre></div>
+
+<h4 id="implementation-of-new-data-structure-stack">Implementation of New Data Structure Stack<a class="headerlink" href="#implementation-of-new-data-structure-stack" title="Permanent link"></a></h4>
+<div class="codehilite"><pre><span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="k">class</span> <span class="nc">Stack</span><span class="p">:</span>
+   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">top</span> <span class="o">=</span> <span class="bp">None</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">0</span>
+
+   <span class="nd">@property</span>
+   <span class="k">def</span> <span class="nf">isEmpty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">top</span> <span class="o">==</span> <span class="bp">None</span>
+</pre></div>
+
+<h4 id="infix-and-postfix-expressions">Infix and Postfix Expressions<a class="headerlink" href="#infix-and-postfix-expressions" title="Permanent link"></a></h4>
+<ul>
+<li>Infix expressions: mathematical expressions are written with the operator between the two operands (a + b)</li>
+<li>Postfix Expressions: operator follows the operands (a b +)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Infix</th>
+<th>PostFix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4*3+2*1</td>
+<td>4 3 2 1 * + *</td>
+</tr>
+</tbody>
+</table>
+<h5 id="implementation-of-postfix-using-stacks">Implementation of postfix using stacks<a class="headerlink" href="#implementation-of-postfix-using-stacks" title="Permanent link"></a></h5>
+<p><code>4 3 2 - 5 * +</code></p>
+<ol>
+<li>Scan until operator found (pushing numbers to the stack as you go along)</li>
+<li>Pop two numbers when operator found</li>
+<li>perform <code>3 - 2 = 1</code></li>
+<li>return <code>1</code> to stack</li>
+<li>perform <code>1*5 = 5</code> and return <code>5</code> to stack</li>
+<li>perform <code>5 + 4 = 9</code></li>
+<li>When finished there should be <strong>exactly</strong> one <em>number</em> in the stack</li>
+</ol>
+<h2 id="queue">Queue<a class="headerlink" href="#queue" title="Permanent link"></a></h2>
+<ul>
+<li>collection of items where the addition of new items happens at one end and the removal of existing items occurs at the other end</li>
+</ul>
+<h4 id="basic-operations_1">Basic Operations<a class="headerlink" href="#basic-operations_1" title="Permanent link"></a></h4>
+<ul>
+<li><code>enqueue</code>: append to tail of queue</li>
+<li><code>dequeue</code>: remove an element from head of queue</li>
+<li><code>isEmpty</code>: returns <code>True</code> if queue is empty, otherwise <code>False</code></li>
+<li><code>peek</code>: returns element at head of queue without removing it</li>
+<li>
+<p><code>size</code>: returns number of items in the queue</p>
+</li>
+<li>
+<p>elements are inserted and removed according to the FIFO (First In, First Out) - LILO (Last In, Last Out) principle</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">q</span><span class="o">.</span><span class="n">dequeue</span><span class="p">()</span>
+<span class="s">&quot;Error: queue is empty&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># create new node with value 4</span>
+<span class="c1"># head and tail both point to new_node</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># new_node = Node(5)</span>
+<span class="c1"># tail.next = new_node</span>
+<span class="c1"># tail = new_node</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1"># new_node = Node 3</span>
+<span class="c1"># tail.next = new_node</span>
+<span class="c1"># tail = new_node</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">q</span><span class="o">.</span><span class="n">dequeue</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># temp = head</span>
+<span class="c1"># head = head.next</span>
+<span class="c1"># temp.next = None</span>
+<span class="c1"># return temp</span>
+</pre></div>
+
+<h4 id="implementation-of-queue">Implementation of Queue<a class="headerlink" href="#implementation-of-queue" title="Permanent link"></a></h4>
+<h6 id="as-a-list">As a List<a class="headerlink" href="#as-a-list" title="Permanent link"></a></h6>
+<div class="codehilite"><pre><span class="c1"># todo: insert code from slides</span>
+</pre></div>
+
+<h6 id="as-a-new-data-structcure">As a New Data Structcure<a class="headerlink" href="#as-a-new-data-structcure" title="Permanent link"></a></h6>
+<div class="codehilite"><pre><span class="c1"># todo: insert code from slides</span>
+</pre></div></article></body></html>

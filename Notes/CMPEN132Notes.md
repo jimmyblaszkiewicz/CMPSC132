@@ -845,9 +845,155 @@ def append(self, e):
    - `insert(after, value)` adds new item after Node(after)
 
 ```python
-
+# todo: insert(after, value)
 ```
 
    - `pop()` removes and returns the last item in the list
 
+```python
+# todo: pop()
+```
 
+
+##Stack
+
+   - Collection of items where the addition of new items and removal of existing items always takes place at same end
+
+####Basic Operations:
+
+   + `push` adds element on top of stack
+   + `pop` removes an element from the stack
+   + `isEmpty` is `True` if stack is empty, otherwise `False`
+   + `peek` returns the top element of the stack without removing it
+   + `size` returns the number of items in the stack
+   
+   - Elements are inserted and removed according to the LIFO(Last in, First out), FILO(First in, Last out) principle
+
+####Internally
+
+   - when we have a push operation, we update pointer for the top
+   - when we pop, we return the top and update the pointer for the top
+
+   - say _s_ is a stack that has been created with no elements in it
+
+```python
+>>> s = Stack()
+>>> pop()
+"Error: stack is empty"
+# or return None
+None
+>>> s.push(4)
+# create a new node with value of 4
+# new_node.next -> None
+# point s.top at new_node
+>>> s.push(5)
+# create a new node pointing to None w value 5
+# set new_node.next = top
+# set top = new_node
+>>> s.push(7)
+# new_node(7)
+# new_node.next = top
+# top = new_node
+>>> s.pop()
+# popped = top
+# top = top.next
+# popped.next = None
+# return popped
+```
+
+####Implementation using a List
+
+```python
+class Stack:
+   def __init__(self):
+      # todo: add from slides
+
+```
+
+####Implementation of New Data Structure Stack
+
+```python
+class Node:
+   def __init__(self,value):
+      self.value = value
+      self.next = None
+
+class Stack:
+   def __init__(self):
+      self.top = None
+      self.length = 0
+
+   @property
+   def isEmpty(self):
+      return self.top == None
+
+```
+
+####Infix and Postfix Expressions
+
+- Infix expressions: mathematical expressions are written with the operator between the two operands (a + b)
+- Postfix Expressions: operator follows the operands (a b +)
+
+|Infix | PostFix|
+|------|--------|
+|4\*3+2\*1|4 3 2 1 \* + \*|
+
+#####Implementation of postfix using stacks
+
+`4 3 2 - 5 * +`
+
+1. Scan until operator found (pushing numbers to the stack as you go along)
+2. Pop two numbers when operator found
+3. perform `3 - 2 = 1`
+4. return `1` to stack
+5. perform `1*5 = 5` and return `5` to stack
+6. perform `5 + 4 = 9`
+7. When finished there should be __exactly__ one _number_ in the stack
+
+## Queue
+- collection of items where the addition of new items happens at one end and the removal of existing items occurs at the other end
+
+####Basic Operations
+- `enqueue`: append to tail of queue
+- `dequeue`: remove an element from head of queue
+- `isEmpty`: returns `True` if queue is empty, otherwise `False`
+- `peek`: returns element at head of queue without removing it
+- `size`: returns number of items in the queue
+
+- elements are inserted and removed according to the FIFO (First In, First Out) - LILO (Last In, Last Out) principle
+
+```python
+>>> q = Queue()
+>>> q.dequeue()
+"Error: queue is empty"
+>>> q.enqueue(4)
+# create new node with value 4
+# head and tail both point to new_node
+>>> q.enqueue(5)
+# new_node = Node(5)
+# tail.next = new_node
+# tail = new_node
+>>> q.enqueue(3)
+# new_node = Node 3
+# tail.next = new_node
+# tail = new_node
+>>> q.dequeue(4)
+# temp = head
+# head = head.next
+# temp.next = None
+# return temp
+```
+
+#### Implementation of Queue
+
+###### As a List
+
+```python
+# todo: insert code from slides
+```
+
+###### As a New Data Structcure
+
+```python
+# todo: insert code from slides
+```
