@@ -2177,9 +2177,9 @@ Subclass inherits from the superclass</li>
 <li>
 <p>Important attributes</p>
 <ul>
-<li>depth</li>
-<li>level</li>
-<li>height</li>
+<li>depth - number of levels from the top for a given node</li>
+<li>level - all nodes on a given level have the same depth</li>
+<li>height - number of levels</li>
 <li>path</li>
 </ul>
 </li>
@@ -2187,12 +2187,18 @@ Subclass inherits from the superclass</li>
 <p>Types of Binary trees</p>
 <ul>
 <li>full binary tree<ul>
-<li>Todo: Get definitions for these</li>
+<li>Todo: Get definitions for Full and Complete</li>
 </ul>
 </li>
 <li>complete binary tree</li>
-<li>perfect biary tree</li>
-<li>degenerate binary tree</li>
+<li>perfect biary tree<ul>
+<li>every node has 2 children</li>
+</ul>
+</li>
+<li>degenerate binary tree<ul>
+<li>every node has 1 child</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2203,4 +2209,59 @@ Subclass inherits from the superclass</li>
 <li>a binary tree with k levels has at most 2^k-1 leaves</li>
 <li>the number of nodes on the last level is at most the sum of the number of nodes on all other levels plus 1</li>
 <li>a binary tree with k levels has no more than 2^k -1 nodes</li>
+</ul>
+<h4 id="binary-search-tree">Binary Search Tree<a class="headerlink" href="#binary-search-tree" title="Permanent link"></a></h4>
+<ul>
+<li>A tree in which all the nodes follow the following properties<ul>
+<li>The left subtree of a node has a key less than or equal to its parent node&rsquo;s tree</li>
+<li>The right subtree of a node has a key greater than its parent node&rsquo;s key</li>
+<li>The left and right subtree are also binary search trees</li>
+</ul>
+</li>
+</ul>
+<h6 id="implementation-of-a-binary-search-tree">Implementation of a Binary Search Tree<a class="headerlink" href="#implementation-of-a-binary-search-tree" title="Permanent link"></a></h6>
+<div class="codehilite"><pre><span class="k">class</span> <span class="nc">binarySearchTree</span><span class="p">:</span>
+   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="bp">None</span>
+
+   <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+         <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="n">node</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">left</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+               <span class="n">node</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+            <span class="k">else</span><span class="p">:</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+         <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span> <span class="o">==</span> <span class="bp">None</span><span class="p">):</span>
+               <span class="n">node</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+
+<h3 id="traversal-of-binary-trees">Traversal of Binary Trees<a class="headerlink" href="#traversal-of-binary-trees" title="Permanent link"></a></h3>
+<ul>
+<li>refers to the process of visiting all the nodes in the tree</li>
+<li>since a binary tree has no cycles, we start the traversal from the root node</li>
+<li>because the tree is hierarchical, there is no unique traversal</li>
+</ul>
+<h5 id="breadth-first-search-bfs">Breadth-First Search (BFS)<a class="headerlink" href="#breadth-first-search-bfs" title="Permanent link"></a></h5>
+<ul>
+<li>traverses the tree in level order: visits every node on a level before going to a lower level</li>
+</ul>
+<p>Todo: Find pictures for the trees, #steal from the lecture slides</p>
+<h5 id="depth-first-search-dfs">Depth-First Search (DFS)<a class="headerlink" href="#depth-first-search-dfs" title="Permanent link"></a></h5>
+<ul>
+<li>go as deep as possible down one path before backing up and trying a different one</li>
+<li>3 Commonly used DFS traversals to visit all the nodes in a tree. They differ by the order in which each node is visited<ul>
+<li>Preorder Traversal(Root-&gt; Left -&gt; Right)</li>
+<li>Inorder Traversal(Left- Root- Right)</li>
+<li>Other Traversal(Right- Left - Root)<ul>
+<li>Todo: Get the name of the third traversal </li>
+</ul>
+</li>
+</ul>
+</li>
 </ul></article></body></html>

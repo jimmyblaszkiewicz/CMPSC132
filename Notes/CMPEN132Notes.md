@@ -1035,17 +1035,19 @@ def reverse(self):
    - can go from root to every other node via edges
 
    - Important attributes
-      + depth
-      + level
-      + height
+      + depth - number of levels from the top for a given node
+      + level - all nodes on a given level have the same depth
+      + height - number of levels
       + path
 
    - Types of Binary trees
       + full binary tree
-         * Todo: Get definitions for these
+         * Todo: Get definitions for Full and Complete
       + complete binary tree
       + perfect biary tree
+         * every node has 2 children
       + degenerate binary tree
+         * every node has 1 child
 
 #####Properties of Binary Trees
    - a binary tree of n nodes has n-1 edges
@@ -1053,3 +1055,54 @@ def reverse(self):
    - a binary tree with k levels has at most 2^k-1 leaves
    - the number of nodes on the last level is at most the sum of the number of nodes on all other levels plus 1
    - a binary tree with k levels has no more than 2^k -1 nodes
+
+
+####Binary Search Tree
+ - A tree in which all the nodes follow the following properties
+    + The left subtree of a node has a key less than or equal to its parent node's tree
+    + The right subtree of a node has a key greater than its parent node's key
+    + The left and right subtree are also binary search trees
+
+######Implementation of a Binary Search Tree
+
+```python
+
+class binarySearchTree:
+   def __init__(self):
+      self.root = None
+
+   def insert(self, node, value):
+      if node == None:
+         self.root = Node(value)
+      else:
+         if value < node.value:
+            if node.left == None:
+               node.left = Node(value)
+
+            else:
+               self.insert(node.left, value)
+         else:
+            if(node.right == None):
+               node.right = Node(value)
+            else:
+               self.insert(node.right, value)
+
+```
+
+### Traversal of Binary Trees
+- refers to the process of visiting all the nodes in the tree
+- since a binary tree has no cycles, we start the traversal from the root node
+- because the tree is hierarchical, there is no unique traversal
+
+#####Breadth-First Search (BFS)
+- traverses the tree in level order: visits every node on a level before going to a lower level
+
+Todo: Find pictures for the trees, #steal from the lecture slides
+
+#####Depth-First Search (DFS)
+- go as deep as possible down one path before backing up and trying a different one
+- 3 Commonly used DFS traversals to visit all the nodes in a tree. They differ by the order in which each node is visited
+      + Preorder Traversal(Root-> Left -> Right)
+      + Inorder Traversal(Left- Root- Right)
+      + Other Traversal(Right- Left - Root)
+         * Todo: Get the name of the third traversal 
