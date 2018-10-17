@@ -1020,7 +1020,7 @@ def reverse(self):
  - A function takes a stack and returns a sorted stack (descending order from the top) What is the internal process if you are only allowed to use another temporary stack in such the function?
 
 ```python
-
+# insert some code here maybe?
 ```
 
 ##Tree
