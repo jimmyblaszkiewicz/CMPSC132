@@ -997,3 +997,59 @@ class Stack:
 ```python
 # todo: insert code from slides
 ```
+
+#### Linear Data Structures
+ - Design a method `reverse` in the LinkedList class that takes a linked list and changes the links between nodes to reverse the list
+
+```python
+def reverse(self):
+        if self.isEmpty:
+            return 'List is empty'
+
+        current = self.head
+        previous = None
+
+        self.head, self.tail = self.tail, self.head
+        while current is not None:
+            oldnext = current.next
+            current.next = previous
+            previous = current
+            current = oldnext
+```
+
+ - A function takes a stack and returns a sorted stack (descending order from the top) What is the internal process if you are only allowed to use another temporary stack in such the function?
+
+```python
+
+```
+
+##Tree
+   - Hierarchical data structure widely used with a root value and subtrees of children with a parent
+   - tree is upside down, root on the top
+   - tree consists of nodes and its connections are called edges
+   - bottom nodeas also named leaf nodes / external nodes
+   - Does not have a cycle, no loops in edges
+   - Nodes with the same parent are called siblings
+
+   - Subtree is a tree with a parent in a different tree
+   - can go from root to every other node via edges
+
+   - Important attributes
+      + depth
+      + level
+      + height
+      + path
+
+   - Types of Binary trees
+      + full binary tree
+         * Todo: Get definitions for these
+      + complete binary tree
+      + perfect biary tree
+      + degenerate binary tree
+
+#####Properties of Binary Trees
+   - a binary tree of n nodes has n-1 edges
+   - for every k>= 1 there are no more than 2^k-1 nodes in level k
+   - a binary tree with k levels has at most 2^k-1 leaves
+   - the number of nodes on the last level is at most the sum of the number of nodes on all other levels plus 1
+   - a binary tree with k levels has no more than 2^k -1 nodes

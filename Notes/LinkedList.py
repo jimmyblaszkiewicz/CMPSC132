@@ -157,19 +157,29 @@ class LinkedList:
         self.length += 1
 
 
+    def reverse(self):
+        if self.isEmpty:
+            return 'List is empty'
+
+        current = self.head
+        previous = None
+
+        self.head, self.tail = self.tail, self.head
+        while current is not None:
+            oldnext = current.next
+            current.next = previous
+            previous = current
+            current = oldnext
+
+
 if __name__ == '__main__':
     x = LinkedList()
     x.append(4)
     x.add(3)
     x.add(2)
     x.append(5)
-
-    print(x[2])
     print(x)
-
-    del x[2]
     print(x)
-
-    del x[5]
+    x.reverse()
     print(x)
     print('Length = {}'.format(x.length))

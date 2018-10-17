@@ -2131,4 +2131,29 @@ Subclass inherits from the superclass</li>
 
 <h6 id="as-a-new-data-structcure">As a New Data Structcure<a class="headerlink" href="#as-a-new-data-structcure" title="Permanent link"></a></h6>
 <div class="codehilite"><pre><span class="c1"># todo: insert code from slides</span>
+</pre></div>
+
+<h4 id="linear-data-structures">Linear Data Structures<a class="headerlink" href="#linear-data-structures" title="Permanent link"></a></h4>
+<ul>
+<li>Design a method <code>reverse</code> in the LinkedList class that takes a linked list and changes the links between nodes to reverse the list</li>
+</ul>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&#39;List is empty&#39;</span>
+
+        <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+        <span class="n">previous</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tail</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+        <span class="k">while</span> <span class="n">current</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">oldnext</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">current</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">previous</span>
+            <span class="n">previous</span> <span class="o">=</span> <span class="n">current</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">oldnext</span>
+</pre></div>
+
+<ul>
+<li>A function takes a stack and returns a sorted stack (descending order from the top) What is the internal process if you are only allowed to use one other temporary stack in such the function?</li>
+</ul>
+<div class="codehilite"><pre>
 </pre></div></article></body></html>
