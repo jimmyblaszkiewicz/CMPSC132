@@ -1102,7 +1102,20 @@ Todo: Find pictures for the trees, #steal from the lecture slides
 #####Depth-First Search (DFS)
 - go as deep as possible down one path before backing up and trying a different one
 - 3 Commonly used DFS traversals to visit all the nodes in a tree. They differ by the order in which each node is visited
-      + Preorder Traversal(Root-> Left -> Right)
-      + Inorder Traversal(Left- Root- Right)
-      + Other Traversal(Right- Left - Root)
-         * Todo: Get the name of the third traversal 
+      + Preorder Traversal (Root -> Left -> Right)
+      + Inorder Traversal (Left -> Root -> Right)
+      + Postorder Traversal (Left -> Right -> Root)
+
+
+#### Application in Calculator
+3+(4*5 + (2-3))
+
+- leafs are all numbers
+- roots are operators
+- one operator for 2 numbers
+- inorder will give same expression
+- postorder will give the postfix expression
+      + can be easily calculated using a stack
+      + 3 4 5 * 2 3 - + +
+- preorder gives prefix expression
+      * + 3 5 etc you know

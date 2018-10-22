@@ -115,5 +115,9 @@ class EncryptTestCase(unittest.TestCase):
         self.assertEqual(round(calculator('-5 + 60 / 3^3 * 4 - 2 * 4 ^2'),2), -28.11)
     def test_mixed_with_exp_2(self):
         self.assertEqual(calculator('5*3 + 2^1'), 17) 
+    def test_mixed_with_exp_3(self):
+        self.assertEqual(round(calculator('5^6 * 2/45 +98 - 61^2'), 4), -2928.5556)
+    def test_mixed_with_exp_4(self):
+        self.assertEqual(calculator('2*2^100'), calculator('2^101'))
         
 if __name__ == '__main__':unittest.main(exit=False)
