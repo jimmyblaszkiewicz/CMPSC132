@@ -1119,3 +1119,183 @@ Todo: Find pictures for the trees, #steal from the lecture slides
       + 3 4 5 * 2 3 - + +
 - preorder gives prefix expression
       * + 3 5 etc you know
+
+###Implementation of Binary Search Tree
+- Includes other traversal methods
+
+######Queue Class For Traversals
+```python
+# Queue implementation using a Python List
+class Queue:
+    def __init__(self):
+        self.items = []
+
+    @property
+    def isEmpty(self):
+        return self.items == []
+
+    def enqueue(self, item):
+        self.items.insert(0,item)
+
+    def dequeue(self):
+        return self.items.pop()
+
+    def size(self):
+        return len(self.items)
+
+```
+
+######Binary Search Tree Class w/ Node
+```python
+# Binary Search Tree implementation
+
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+    def __str__(self):
+        return ("Node({})".format(self.value)) 
+
+    __repr__ = __str__
+
+
+class BinarySearchTree:
+    def __init__(self):
+        self.root = None
+
+    @property
+    def isEmpty(self):
+        return self.root is None
+    
+    def insert(self, node, value):
+        # to be used like mytree.insert(mytree.root, 4)
+
+        # if no root, make the value the new root
+        if node is None:
+            # this code won't be run if insert is called again down below
+            # because it checks if that left/right was none
+            self.root = Node(value)
+
+        else:
+            # if value is less than or equal to 'root'
+            if value <= node.value:
+                if node.left is None:
+                    # if theres nothing on the left just add it there
+                    node.left = Node(value)
+                else:
+                    # otherwise run insert again with that node 
+                    # (bc binary search trees are made of other binary search trees)
+                    self.insert(node.left, value)
+            else:
+                if node.right is None:
+                    node.right = Node(value)
+                else:
+                    self.insert(node.right, value)
+```
+
+###### Breadth First Search
+```python
+def breadthFirstSearch(self):
+   if self.isEmpty:
+      return 'Tree is Empty'
+
+   q = Queue()
+   visited = []
+   # root first
+   q.enqueue(self.root)
+   # get loopy
+   while not q.isEmpty:
+      node = q.dequeue()
+      visited.append(node.value)
+
+      # Left
+      if node.left is not None:
+          q.enqueue(node.left)
+
+      # right side
+      if node.right is not None:
+          q.enqueue(node.right)
+
+   return visited
+```
+
+######Recursive Preorder
+
+```python
+def preorder(self, node):
+   # visit entire tree by calling mytree.preorder(mytree.root)
+   # start with node (preorder is recursive)
+   if node is not None:
+      # preorder = root left right
+      # print node and trailing ' '
+      # can just as easily be appending to a string to return at the end
+      print(node.value, end=' ')
+      self.preorder(node.left)
+      self.preorder(node.right)
+```
+
+######Recursive Inorder
+
+```python
+def inorder(self, node):
+   # similar to preorder (just different order)
+   if node is not None:
+      # inorder = left root right
+      self.inorder(node.left)
+      print(node.value, end = ' ')
+      self.inorder(node.right)
+```
+
+######Recursive Postorder
+
+```python
+def postorder(self, node):
+   if node is not None:
+      # postorder = left right root
+      self.inorder(node.left)
+      self.inorder(node.right)
+      print(node.value, end = ' ')
+```
+
+######Legible Representation using `__str__` and `__repr__`
+
+```python
+# todo: Implement legible representation overriding __repr__
+```
+
+##Graphs
+
+   - A data structure with nodes (also called vertices) that are connected by edges
+   - Graphs can be undirected or directed
+      * directed = one way to travel along edges
+      * undirected = can travel both ways along the edges
+   - Edges can represent distance or weight or whatever
+      * Edges can have values
+      * Values called 'costs'
+         + A travels to B with cost 5
+   - Graphs can contain cycles
+      + Cyclic = undirected with cycle
+      + Acyclic graph = undirected with no cycle
+      + Acyclic can also be directed with a cycle, but cannot travel along it
+      + Cyclic can be directed graph with travelable cycle
+   
+####Key Terms
+   - **Vertex**: a fundamental part of a graph, can have name and additional information
+   - **Edge**: connects two vertices to show a relationship between them, can be one-way or two-way
+   - **Weight**: Edges may be weighted to show that there is a cost to go from one vertex to another
+   - **Path**: sequence of vertices that are connected by edges
+   - **Cycle**: a cycle in a directed graph is a path that starts and ends at the same vertex, a graph with no cycles is acyclic, a directed graph with no cycles is a Directed Acyclic Graph (DAG)
+
+
+   - A graph can be represented as `G=(V,E)`, where V is a set of vertices and E is a set of Edges. Each edge is a tuple `(v,w)` where `w`, `v` are Vertices
+
+####Edges
+   - **Tree edge**: edges that we encounter while down one path of a graph
+   - **Non-Tree Edge**:
+      + **Forward Edge**: allows us to move forward through the graph, and could potentially be part of another paht down the tree
+      + **Backward Edge**: connects a node in a graph back up to one of its ancestors or itself
+      + **Cross Edge**: connects to sibling nodes that don't necessarily share an ancestor in a tree path, but connects them anyways
+
+   - In an undirected graph, there are no forward edges or cross edges. Every single edge must be either a tree edge or a backward edge 

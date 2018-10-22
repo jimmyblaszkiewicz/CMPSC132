@@ -2261,4 +2261,211 @@ Subclass inherits from the superclass</li>
 <li>Postorder Traversal (Left -&gt; Right -&gt; Root)</li>
 </ul>
 </li>
+</ul>
+<h4 id="application-in-calculator">Application in Calculator<a class="headerlink" href="#application-in-calculator" title="Permanent link"></a></h4>
+<p>3+(4*5 + (2-3))</p>
+<ul>
+<li>leafs are all numbers</li>
+<li>roots are operators</li>
+<li>one operator for 2 numbers</li>
+<li>inorder will give same expression</li>
+<li>postorder will give the postfix expression<ul>
+<li>can be easily calculated using a stack</li>
+<li>3 4 5 * 2 3 - + +</li>
+</ul>
+</li>
+<li>preorder gives prefix expression<ul>
+<li>
+<ul>
+<li>3 5 etc you know</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="implementation-of-binary-search-tree">Implementation of Binary Search Tree<a class="headerlink" href="#implementation-of-binary-search-tree" title="Permanent link"></a></h3>
+<ul>
+<li>Includes other traversal methods</li>
+</ul>
+<h6 id="queue-class-for-traversals">Queue Class For Traversals<a class="headerlink" href="#queue-class-for-traversals" title="Permanent link"></a></h6>
+<div class="codehilite"><pre><span class="c1"># Queue implementation using a Python List</span>
+<span class="k">class</span> <span class="nc">Queue</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">isEmpty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">==</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">enqueue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">dequeue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+</pre></div>
+
+<h6 id="binary-search-tree-class-w-node">Binary Search Tree Class w/ Node<a class="headerlink" href="#binary-search-tree-class-w-node" title="Permanent link"></a></h6>
+<div class="codehilite"><pre><span class="c1"># Binary Search Tree implementation</span>
+
+<span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s">&quot;Node({})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">))</span> 
+
+    <span class="n">__repr__</span> <span class="o">=</span> <span class="n">__str__</span>
+
+
+<span class="k">class</span> <span class="nc">BinarySearchTree</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">isEmpty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="ow">is</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="c1"># to be used like mytree.insert(mytree.root, 4)</span>
+
+        <span class="c1"># if no root, make the value the new root</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c1"># this code won&#39;t be run if insert is called again down below</span>
+            <span class="c1"># because it checks if that left/right was none</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># if value is less than or equal to &#39;root&#39;</span>
+            <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="n">node</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">left</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="c1"># if theres nothing on the left just add it there</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># otherwise run insert again with that node </span>
+                    <span class="c1"># (bc binary search trees are made of other binary search trees)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">right</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+
+<h6 id="breadth-first-search">Breadth First Search<a class="headerlink" href="#breadth-first-search" title="Permanent link"></a></h6>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">breadthFirstSearch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+   <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">:</span>
+      <span class="k">return</span> <span class="s">&#39;Tree is Empty&#39;</span>
+
+   <span class="n">q</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+   <span class="n">visited</span> <span class="o">=</span> <span class="p">[]</span>
+   <span class="c1"># root first</span>
+   <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
+   <span class="c1"># get loopy</span>
+   <span class="k">while</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">:</span>
+      <span class="n">node</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">dequeue</span><span class="p">()</span>
+      <span class="n">visited</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+      <span class="c1"># Left</span>
+      <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">left</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+          <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+
+      <span class="c1"># right side</span>
+      <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">right</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+          <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+
+   <span class="k">return</span> <span class="n">visited</span>
+</pre></div>
+
+<h6 id="recursive-preorder">Recursive Preorder<a class="headerlink" href="#recursive-preorder" title="Permanent link"></a></h6>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">preorder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+   <span class="c1"># visit entire tree by calling mytree.preorder(mytree.root)</span>
+   <span class="c1"># start with node (preorder is recursive)</span>
+   <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="c1"># preorder = root left right</span>
+      <span class="c1"># print node and trailing &#39; &#39;</span>
+      <span class="c1"># can just as easily be appending to a string to return at the end</span>
+      <span class="k">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">&#39; &#39;</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">preorder</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">preorder</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+</pre></div>
+
+<h6 id="recursive-inorder">Recursive Inorder<a class="headerlink" href="#recursive-inorder" title="Permanent link"></a></h6>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">inorder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+   <span class="c1"># similar to preorder (just different order)</span>
+   <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="c1"># inorder = left root right</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">inorder</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+      <span class="k">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s">&#39; &#39;</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">inorder</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+</pre></div>
+
+<h6 id="recursive-postorder">Recursive Postorder<a class="headerlink" href="#recursive-postorder" title="Permanent link"></a></h6>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">postorder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+   <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="c1"># postorder = left right root</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">inorder</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">inorder</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+      <span class="k">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s">&#39; &#39;</span><span class="p">)</span>
+</pre></div>
+
+<h6 id="legible-representation-using-__str__-and-__repr__">Legible Representation using <code>__str__</code> and <code>__repr__</code><a class="headerlink" href="#legible-representation-using-__str__-and-__repr__" title="Permanent link"></a></h6>
+<div class="codehilite"><pre><span class="c1"># todo: Implement legible representation overriding __repr__</span>
+</pre></div>
+
+<h2 id="graphs">Graphs<a class="headerlink" href="#graphs" title="Permanent link"></a></h2>
+<ul>
+<li>A data structure with nodes (also called vertices) that are connected by edges</li>
+<li>Graphs can be undirected or directed<ul>
+<li>directed = one way to travel along edges</li>
+<li>undirected = can travel both ways along the edges</li>
+</ul>
+</li>
+<li>Edges can represent distance or weight or whatever<ul>
+<li>Edges can have values</li>
+<li>Values called &lsquo;costs&rsquo;<ul>
+<li>A travels to B with cost 5</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Graphs can contain cycles<ul>
+<li>Cyclic = undirected with cycle</li>
+<li>Acyclic graph = undirected with no cycle</li>
+<li>Acyclic can also be directed with a cycle, but cannot travel along it</li>
+<li>Cyclic can be directed graph with travelable cycle</li>
+</ul>
+</li>
+</ul>
+<h4 id="key-terms">Key Terms<a class="headerlink" href="#key-terms" title="Permanent link"></a></h4>
+<ul>
+<li><strong>Vertex</strong>: a fundamental part of a graph, can have name and additional information</li>
+<li><strong>Edge</strong>: connects two vertices to show a relationship between them, can be one-way or two-way</li>
+<li><strong>Weight</strong>: Edges may be weighted to show that there is a cost to go from one vertex to another</li>
+<li><strong>Path</strong>: sequence of vertices that are connected by edges</li>
+<li>
+<p><strong>Cycle</strong>: a cycle in a directed graph is a path that starts and ends at the same vertex, a graph with no cycles is acyclic, a directed graph with no cycles is a Directed Acyclic Graph (DAG)</p>
+</li>
+<li>
+<p>A graph can be represented as <code>G=(V,E)</code>, where V is a set of vertices and E is a set of Edges. Each edge is a tuple <code>(v,w)</code> where <code>w</code>, <code>v</code> are Vertices</p>
+</li>
+</ul>
+<h4 id="edges">Edges<a class="headerlink" href="#edges" title="Permanent link"></a></h4>
+<ul>
+<li><strong>Tree edge</strong>: edges that we encounter while down one path of a graph</li>
+<li>
+<p><strong>Non-Tree Edge</strong>:</p>
+<ul>
+<li><strong>Forward Edge</strong>: allows us to move forward through the graph, and could potentially be part of another paht down the tree</li>
+<li><strong>Backward Edge</strong>: connects a node in a graph back up to one of its ancestors or itself</li>
+<li><strong>Cross Edge</strong>: connects to sibling nodes that don&rsquo;t necessarily share an ancestor in a tree path, but connects them anyways</li>
+</ul>
+</li>
+<li>
+<p>In an undirected graph, there are no forward edges or cross edges. Every single edge must be either a tree edge or a backward edge </p>
+</li>
 </ul></article></body></html>
