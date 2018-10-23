@@ -5,7 +5,6 @@
 # Name: James Blaszkiewicz 
 # Collaboration Statement: I completed this assignment by myself
 #                          using only the class materials
-#                          using only the class materials
 #  
 ########################################
 
