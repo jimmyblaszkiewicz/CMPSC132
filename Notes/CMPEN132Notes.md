@@ -1299,3 +1299,4 @@ def postorder(self, node):
       + **Cross Edge**: connects to sibling nodes that don't necessarily share an ancestor in a tree path, but connects them anyways
 
    - In an undirected graph, there are no forward edges or cross edges. Every single edge must be either a tree edge or a backward edge 
+

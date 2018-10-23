@@ -40,6 +40,7 @@ class Queue:
     def __init__(self): 
         self.head=None
         self.tail=None
+        self.length = 0
 
     def __str__(self):
         temp=self.head
@@ -53,14 +54,40 @@ class Queue:
     __repr__=__str__
 
     def isEmpty(self):
-        #write your code here
+        return self.head is None
 
     def __len__(self):
-        #write your code here
+        return self.length
 
     def enqueue(self, value):
-        #write your code here
+        # if no elements in queue yet, set new node = head and tail
+        if self.head is None:
+            self.head = Node(value)
+            self.tail = self.head
+
+        # if there are elements, put new node as tail.next and reset tail to new node
+        else:
+            new_node = Node(value)
+            self.tail.next = new_node
+            self.tail = new_node
+
+        self.length += 1
 
 
     def dequeue(self):
-        #write your code here
+        # if queue is already empty, say so
+        if self.isEmpty():
+            return 'Queue is empty'
+
+        # set dequeued temp variable to head, set new head to the next item in queue
+        dequeued = self.head
+        self.head = dequeued.next
+        
+        # if dequeued was also the tail, set tail to none
+        if self.length == 1:
+            self.tail = None
+
+        # unlink dequeued from queue and decrement length
+        dequeued.next = None
+        self.length -= 1
+        return dequeued.value
