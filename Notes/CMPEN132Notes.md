@@ -1300,3 +1300,130 @@ def postorder(self, node):
 
    - In an undirected graph, there are no forward edges or cross edges. Every single edge must be either a tree edge or a backward edge 
 
+####Connections
+
+######Strongly connected
+   - A graph is strongly connected if for every vertex there is some path from u to v and from v to u
+
+   - G = (V, E) where:
+      + V={A,B,C,D,E}
+      + E={(A,C,12),AD60,BA10,CB20,CD32,EA7}
+      + Path from A to B = (A, C, B)
+      + Cycle = ...
+
+
+###Graph Implementation
+##### Adjacency Matrix
+   + when two vertices are connected by an edge, we say they are adjacent
+   + rows and columns labeled with nodes
+   + (Strictly speaking, rows are where edge originates, columns are where edge is directed)
+   + table populated with weights (1 for undirected/unweighted)
+
+|     |A|B|C|D|E|F|
+|-----|-|-|-|-|-|-|
+|**A**| |1|1| | | |
+|**B**|1| |1|1| |1|
+|**C**|1|1| | |1| |
+|**D**| |1| | | | | 
+|**E**| | |1| | | | 
+|**F**| |1| | | | |
+
+
+- Most of it is empty, use something else that takes up less space
+
+##### Adjacency List
+- Use dict where keys are the vertices and values are all the other nodes it is connected to
+```
+A: B,C
+B: A,C,D,F
+C: A,B,E
+D: B
+E: C
+F: B
+```
+
+####Graph Traversals
+- Breadth first search: starts at an arbitrary nde in a graph and explores all of the neighbor nodes at the present depth prior to moving on to the nodes at the next depth level
+      * Use queue data structure to help
+- Depth first search:  It starts at some arbitrary node in a graph and explores as far as possible along each branch before backtracking
+      * Use stack data structure to help
+
+*Choose alphabetical/numerical order nodes first (no left/right)*
+
+####Dijkstra's Algorithm
+- From starting node, visit node with smallst known distance
+- once you have moved to the smallest-distance node, check each neighboring node
+- for each neighboring node, compute the distance for the neighboring nodes by summing the distance of the edges leading from the start node
+- if the distance to a node is less than a known distance, update the shortest distance for that node
+
+1. store visited and unvisited nodes
+2. Choose A to start
+      1. visit adjacent nodes to A
+      2. add the cost of edge between start and new adjacent nodes
+      3. Replace shortest distance (inf) with new shortest distance from A
+      4. Put A in previous node section, visited
+
+3. Choose C (shortest known distance)
+      1. visit adjacent nodes to C
+      2. add cost of edge to new adjacent node from C + previous cost for C
+      3. ...
+
+4. Choose B (shortest known distance not yet visited)
+      1. ignore distance to A (already visited)
+      2. check adjacent node distances...
+      3. repeat
+5. repeat until all nodes are in visited list
+
+- Can rebuild path by going backwards from target to start, looking at 'Previous Node'
+
+
+##Hash Tables
+- Collection of items which are stored in such a way as to make them easy to find later
+- Each position of the hash table, often called a `bucket`, can hold an item and is named by an integer value starting at 0
+- Basically Math Parkour, get from one place to another with the strangest and most creative math you can think of
+
+###Hash Function
+- The mapping between an item and the bucket where that item belongs in the hash table is the Hash Function
+- must be efficiently computable and should uniformly distribute the keys
+- modular method is the most common hash function, just takes an item and divides it by the table size, returning the remainder as its hash value
+- Important aspect of hash functions: Non-reversible (easily)
+
+###Modular Hashing
+- once the hash values have been computed we can insert each item into the hash table at the designated position
+- The load factor (\lambda) of a hash table is commonly denoted by (\lambda) = (#of items) / (table size)
+- Load Factor basically = What percent of the table is full
+
+###Collision
+- when we want to search for an item, use hash function to compute the bucket name for the item and check table to see if it is present
+- Only works if each item maps to a unique location in the hash table
+- collision when two or more items need to be in the same bucket, and it creates problems for the hashing technique
+- Probability of a collision increases as load factor -> 1 (actually even .5)
+
+####Perfection
+- A hash function that maps each item into a unique bucket is a Perfect Hash Function
+- Unfortunately, given an arbitrary collection of items, there is no systematic way to construct a perfect hash function.
+- the goal is to create a hash function that minimizes the number of collisions, is easy to compute, and evenly distributes the items in the hash table
+- Simple but Secure
+
+####Folding Method
+- divide the item into equal size pieces (the last piece may not be of equal size)
+      + 814 865-4701
+- add the pieces to obtain the item to be hashed
+      + 81 + 48 + 65 + 47 + 01 = 242
+- some folding methods go one step further and reverse every other piece 
+before the addition
+      + 81 + 84 + 65 + 74 + 01 = 305
+
+- for hash table of size 12:
+      * 242%12 = 2
+      * 305%12 = 5
+
+####Mid-Square Method
+- Square the item
+- Extract some portion of the resulting digits
+      * 65^2 = 4225 => Choose 22, 42, 45, whatever you want just be consistent
+- Hash em up
+
+####Hashing Strings
+- convert each haracter of the string into ordinal values
+- add ordinal values and use modular method to get a hash value

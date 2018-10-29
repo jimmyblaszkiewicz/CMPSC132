@@ -2468,4 +2468,234 @@ Subclass inherits from the superclass</li>
 <li>
 <p>In an undirected graph, there are no forward edges or cross edges. Every single edge must be either a tree edge or a backward edge </p>
 </li>
+</ul>
+<h4 id="connections">Connections<a class="headerlink" href="#connections" title="Permanent link"></a></h4>
+<h6 id="strongly-connected">Strongly connected<a class="headerlink" href="#strongly-connected" title="Permanent link"></a></h6>
+<ul>
+<li>
+<p>A graph is strongly connected if for every vertex there is some path from u to v and from v to u</p>
+</li>
+<li>
+<p>G = (V, E) where:</p>
+<ul>
+<li>V={A,B,C,D,E}</li>
+<li>E={(A,C,12),AD60,BA10,CB20,CD32,EA7}</li>
+<li>Path from A to B = (A, C, B)</li>
+<li>Cycle = &hellip;</li>
+</ul>
+</li>
+</ul>
+<h3 id="graph-implementation">Graph Implementation<a class="headerlink" href="#graph-implementation" title="Permanent link"></a></h3>
+<h5 id="adjacency-matrix">Adjacency Matrix<a class="headerlink" href="#adjacency-matrix" title="Permanent link"></a></h5>
+<ul>
+<li>when two vertices are connected by an edge, we say they are adjacent</li>
+<li>rows and columns labeled with nodes</li>
+<li>(Strictly speaking, rows are where edge originates, columns are where edge is directed)</li>
+<li>table populated with weights (1 for undirected/unweighted)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td></td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>E</strong></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>F</strong></td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Most of it is empty, use something else that takes up less space</li>
+</ul>
+<h5 id="adjacency-list">Adjacency List<a class="headerlink" href="#adjacency-list" title="Permanent link"></a></h5>
+<ul>
+<li>Use dict where keys are the vertices and values are all the other nodes it is connected to
+<div class="codehilite"><pre>A: B,C
+B: A,C,D,F
+C: A,B,E
+D: B
+E: C
+F: B
+</pre></div></li>
+</ul>
+<h4 id="graph-traversals">Graph Traversals<a class="headerlink" href="#graph-traversals" title="Permanent link"></a></h4>
+<ul>
+<li>Breadth first search: starts at an arbitrary nde in a graph and explores all of the neighbor nodes at the present depth prior to moving on to the nodes at the next depth level<ul>
+<li>Use queue data structure to help</li>
+</ul>
+</li>
+<li>Depth first search:  It starts at some arbitrary node in a graph and explores as far as possible along each branch before backtracking<ul>
+<li>Use stack data structure to help</li>
+</ul>
+</li>
+</ul>
+<p><em>Choose alphabetical/numerical order nodes first (no left/right)</em></p>
+<h4 id="dijkstras-algorithm">Dijkstra&rsquo;s Algorithm<a class="headerlink" href="#dijkstras-algorithm" title="Permanent link"></a></h4>
+<ul>
+<li>From starting node, visit node with smallst known distance</li>
+<li>once you have moved to the smallest-distance node, check each neighboring node</li>
+<li>for each neighboring node, compute the distance for the neighboring nodes by summing the distance of the edges leading from the start node</li>
+<li>if the distance to a node is less than a known distance, update the shortest distance for that node</li>
+</ul>
+<ol>
+<li>store visited and unvisited nodes</li>
+<li>
+<p>Choose A to start</p>
+<ol>
+<li>visit adjacent nodes to A</li>
+<li>add the cost of edge between start and new adjacent nodes</li>
+<li>Replace shortest distance (inf) with new shortest distance from A</li>
+<li>Put A in previous node section, visited</li>
+</ol>
+</li>
+<li>
+<p>Choose C (shortest known distance)</p>
+<ol>
+<li>visit adjacent nodes to C</li>
+<li>add cost of edge to new adjacent node from C + previous cost for C</li>
+<li>&hellip;</li>
+</ol>
+</li>
+<li>
+<p>Choose B (shortest known distance not yet visited)</p>
+<ol>
+<li>ignore distance to A (already visited)</li>
+<li>check adjacent node distances&hellip;</li>
+<li>repeat</li>
+</ol>
+</li>
+<li>repeat until all nodes are in visited list</li>
+</ol>
+<ul>
+<li>Can rebuild path by going backwards from target to start, looking at &lsquo;Previous Node&rsquo;</li>
+</ul>
+<h2 id="hash-tables">Hash Tables<a class="headerlink" href="#hash-tables" title="Permanent link"></a></h2>
+<ul>
+<li>Collection of items which are stored in such a way as to make them easy to find later</li>
+<li>Each position of the hash table, often called a <code>bucket</code>, can hold an item and is named by an integer value starting at 0</li>
+<li>Basically Math Parkour, get from one place to another with the strangest and most creative math you can think of</li>
+</ul>
+<h3 id="hash-function">Hash Function<a class="headerlink" href="#hash-function" title="Permanent link"></a></h3>
+<ul>
+<li>The mapping between an item and the bucket where that item belongs in the hash table is the Hash Function</li>
+<li>must be efficiently computable and should uniformly distribute the keys</li>
+<li>modular method is the most common hash function, just takes an item and divides it by the table size, returning the remainder as its hash value</li>
+<li>Important aspect of hash functions: Non-reversible (easily)</li>
+</ul>
+<h3 id="modular-hashing">Modular Hashing<a class="headerlink" href="#modular-hashing" title="Permanent link"></a></h3>
+<ul>
+<li>once the hash values have been computed we can insert each item into the hash table at the designated position</li>
+<li>The load factor (\lambda) of a hash table is commonly denoted by (\lambda) = (#of items) / (table size)</li>
+<li>Load Factor basically = What percent of the table is full</li>
+</ul>
+<h3 id="collision">Collision<a class="headerlink" href="#collision" title="Permanent link"></a></h3>
+<ul>
+<li>when we want to search for an item, use hash function to compute the bucket name for the item and check table to see if it is present</li>
+<li>Only works if each item maps to a unique location in the hash table</li>
+<li>collision when two or more items need to be in the same bucket, and it creates problems for the hashing technique</li>
+<li>Probability of a collision increases as load factor -&gt; 1 (actually even .5)</li>
+</ul>
+<h4 id="perfection">Perfection<a class="headerlink" href="#perfection" title="Permanent link"></a></h4>
+<ul>
+<li>A hash function that maps each item into a unique bucket is a Perfect Hash Function</li>
+<li>Unfortunately, given an arbitrary collection of items, there is no systematic way to construct a perfect hash function.</li>
+<li>the goal is to create a hash function that minimizes the number of collisions, is easy to compute, and evenly distributes the items in the hash table</li>
+<li>Simple but Secure</li>
+</ul>
+<h4 id="folding-method">Folding Method<a class="headerlink" href="#folding-method" title="Permanent link"></a></h4>
+<ul>
+<li>divide the item into equal size pieces (the last piece may not be of equal size)<ul>
+<li>814 865-4701</li>
+</ul>
+</li>
+<li>add the pieces to obtain the item to be hashed<ul>
+<li>81 + 48 + 65 + 47 + 01 = 242</li>
+</ul>
+</li>
+<li>
+<p>some folding methods go one step further and reverse every other piece 
+before the addition</p>
+<ul>
+<li>81 + 84 + 65 + 74 + 01 = 305</li>
+</ul>
+</li>
+<li>
+<p>for hash table of size 12:</p>
+<ul>
+<li>242%12 = 2</li>
+<li>305%12 = 5</li>
+</ul>
+</li>
+</ul>
+<h4 id="mid-square-method">Mid-Square Method<a class="headerlink" href="#mid-square-method" title="Permanent link"></a></h4>
+<ul>
+<li>Square the item</li>
+<li>Extract some portion of the resulting digits<ul>
+<li>65^2 = 4225 =&gt; Choose 22, 42, 45, whatever you want just be consistent</li>
+</ul>
+</li>
+<li>Hash em up</li>
+</ul>
+<h4 id="hashing-strings">Hashing Strings<a class="headerlink" href="#hashing-strings" title="Permanent link"></a></h4>
+<ul>
+<li>convert each haracter of the string into ordinal values</li>
+<li>add ordinal values and use modular method to get a hash value</li>
 </ul></article></body></html>
