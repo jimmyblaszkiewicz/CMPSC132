@@ -87,6 +87,7 @@ class OrderedLinkedList:
         if self.isEmpty:
             self.head = new_node
             self.tail = new_node
+            self.length +=1
             return
 
         # otherwise find correct spot in current list
