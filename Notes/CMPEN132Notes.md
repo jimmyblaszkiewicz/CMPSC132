@@ -1427,3 +1427,43 @@ before the addition
 ####Hashing Strings
 - convert each haracter of the string into ordinal values
 - add ordinal values and use modular method to get a hash value
+
+###Collision Resolution
+- Extremely important to be consistent when this happens
+
+####Open Addressing
+- Try to find the next open bucket in the hash table
+- in General:
+      * Get from slides
+
+- visiting each bucket one at a time is an open addressing type called Linear Probing
+- What happens when we want to go backwards
+      * 20%11 = 9 -> look in 9
+      * Cant say 20 is not in the hash table if it isnt in 9
+      * couldve been a collision
+      * Because we used linear probing, we have to look through the next buckets until we either have a 20, or we have an empty bucket
+
+#####Clustering
+- when many collisions occur at the same hash value, a number of surrounding buckets will be filled by the linear probing resolution
+- A big cluster of buckets around the 'problem bucket' will be occupied, this becomes an issue bc then the rest of the buckets near there are filled and the hash table is not filled efficiently
+
+
+- Resolution
+      - dont put the collided item in the next open probe, look +3 or +4 ...
+      - This ensures that the items that cause collisions would be more evenly distributed in the hash table
+
+- TODO: Get notes from the slides for this entire section
+
+- Chaining
+      * allows each bucket to hold a reference to a collection of items
+      * chaining allows many items to exist at the same place in the hash table
+      * when collisions happen, the item is stll placed in the proper bucket of the hash table
+      * as more items hash to the same location, the difficulty of searching for the ite in the collection increases
+         - use a nested hash table? can we do this?
+         - I think so.
+      * 
+
+- Remember 
+   + if the load factor is small, then there is a lower cahnce of collisions, meaning that the items are more likely to be in the buckets where they belong
+   + If the load factor is large, meaning that the table is filling up, then there are more and more collisions, this means that collision resolution is more difficult, requiring more comparisions to find an empty bucket
+      * usually have quite a bit more buckets than items 

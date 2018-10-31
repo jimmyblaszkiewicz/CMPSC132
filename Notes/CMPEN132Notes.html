@@ -2698,4 +2698,67 @@ before the addition</p>
 <ul>
 <li>convert each haracter of the string into ordinal values</li>
 <li>add ordinal values and use modular method to get a hash value</li>
+</ul>
+<h3 id="collision-resolution">Collision Resolution<a class="headerlink" href="#collision-resolution" title="Permanent link"></a></h3>
+<ul>
+<li>Extremely important to be consistent when this happens</li>
+</ul>
+<h4 id="open-addressing">Open Addressing<a class="headerlink" href="#open-addressing" title="Permanent link"></a></h4>
+<ul>
+<li>Try to find the next open bucket in the hash table</li>
+<li>
+<p>in General:</p>
+<ul>
+<li>Get from slides</li>
+</ul>
+</li>
+<li>
+<p>visiting each bucket one at a time is an open addressing type called Linear Probing</p>
+</li>
+<li>What happens when we want to go backwards<ul>
+<li>20%11 = 9 -&gt; look in 9</li>
+<li>Cant say 20 is not in the hash table if it isnt in 9</li>
+<li>couldve been a collision</li>
+<li>Because we used linear probing, we have to look through the next buckets until we either have a 20, or we have an empty bucket</li>
+</ul>
+</li>
+</ul>
+<h5 id="clustering">Clustering<a class="headerlink" href="#clustering" title="Permanent link"></a></h5>
+<ul>
+<li>when many collisions occur at the same hash value, a number of surrounding buckets will be filled by the linear probing resolution</li>
+<li>
+<p>A big cluster of buckets around the &lsquo;problem bucket&rsquo; will be occupied, this becomes an issue bc then the rest of the buckets near there are filled and the hash table is not filled efficiently</p>
+</li>
+<li>
+<p>Resolution</p>
+<ul>
+<li>dont put the collided item in the next open probe, look +3 or +4 &hellip;</li>
+<li>This ensures that the items that cause collisions would be more evenly distributed in the hash table</li>
+</ul>
+</li>
+<li>
+<p>TODO: Get notes from the slides for this entire section</p>
+</li>
+<li>
+<p>Chaining</p>
+<ul>
+<li>allows each bucket to hold a reference to a collection of items</li>
+<li>chaining allows many items to exist at the same place in the hash table</li>
+<li>when collisions happen, the item is stll placed in the proper bucket of the hash table</li>
+<li>as more items hash to the same location, the difficulty of searching for the ite in the collection increases<ul>
+<li>use a nested hash table? can we do this?</li>
+<li>I think so.</li>
+</ul>
+</li>
+<li></li>
+</ul>
+</li>
+<li>
+<p>Remember </p>
+</li>
+<li>if the load factor is small, then there is a lower cahnce of collisions, meaning that the items are more likely to be in the buckets where they belong</li>
+<li>If the load factor is large, meaning that the table is filling up, then there are more and more collisions, this means that collision resolution is more difficult, requiring more comparisions to find an empty bucket<ul>
+<li>usually have quite a bit more buckets than items </li>
+</ul>
+</li>
 </ul></article></body></html>
