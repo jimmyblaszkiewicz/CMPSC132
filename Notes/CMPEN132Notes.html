@@ -2745,19 +2745,18 @@ before the addition</p>
 <li>allows each bucket to hold a reference to a collection of items</li>
 <li>chaining allows many items to exist at the same place in the hash table</li>
 <li>when collisions happen, the item is stll placed in the proper bucket of the hash table</li>
-<li>as more items hash to the same location, the difficulty of searching for the ite in the collection increases<ul>
+<li>as more items hash to the same location, the difficulty of searching for the item in the collection increases<ul>
 <li>use a nested hash table? can we do this?</li>
 <li>I think so.</li>
 </ul>
 </li>
-<li></li>
 </ul>
 </li>
 <li>
 <p>Remember </p>
-</li>
+<ul>
 <li>if the load factor is small, then there is a lower cahnce of collisions, meaning that the items are more likely to be in the buckets where they belong</li>
-<li>If the load factor is large, meaning that the table is filling up, then there are more and more collisions, this means that collision resolution is more difficult, requiring more comparisions to find an empty bucket<ul>
+<li>If the load factor is large, meaning that the table is filling up, then there are more and more collisions, this means that collision resolution is more difficult, requiring more comparisions to find an empty bucket</li>
 <li>usually have quite a bit more buckets than items </li>
 </ul>
 </li>

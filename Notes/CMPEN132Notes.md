@@ -1458,14 +1458,13 @@ before the addition
       * allows each bucket to hold a reference to a collection of items
       * chaining allows many items to exist at the same place in the hash table
       * when collisions happen, the item is stll placed in the proper bucket of the hash table
-      * as more items hash to the same location, the difficulty of searching for the ite in the collection increases
+      * as more items hash to the same location, the difficulty of searching for the item in the collection increases
          - use a nested hash table? can we do this?
          - I think so.
-      * 
 
 - Remember 
-   + if the load factor is small, then there is a lower cahnce of collisions, meaning that the items are more likely to be in the buckets where they belong
-   + If the load factor is large, meaning that the table is filling up, then there are more and more collisions, this means that collision resolution is more difficult, requiring more comparisions to find an empty bucket
+      + if the load factor is small, then there is a lower cahnce of collisions, meaning that the items are more likely to be in the buckets where they belong
+      + If the load factor is large, meaning that the table is filling up, then there are more and more collisions, this means that collision resolution is more difficult, requiring more comparisions to find an empty bucket
       * usually have quite a bit more buckets than items 
 
 --------------------------------
