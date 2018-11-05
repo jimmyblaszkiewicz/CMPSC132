@@ -1467,3 +1467,8 @@ before the addition
    + if the load factor is small, then there is a lower cahnce of collisions, meaning that the items are more likely to be in the buckets where they belong
    + If the load factor is large, meaning that the table is filling up, then there are more and more collisions, this means that collision resolution is more difficult, requiring more comparisions to find an empty bucket
       * usually have quite a bit more buckets than items 
+
+--------------------------------
+#Searching and Sorting Algorithms
+
+
