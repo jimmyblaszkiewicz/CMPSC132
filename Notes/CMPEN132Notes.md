@@ -1470,4 +1470,26 @@ before the addition
 --------------------------------
 #Searching and Sorting Algorithms
 
+- Searching is the algorithmic process of finding a particular item in a collection of items
+- A search typically answers `True` or `False` as to whether the item is present and sometimes it may be modified to return where the item is found
+- sorting is the process of placing elements from a collection in some kind of order
+- sorting a large number of items can take a substantial amount of computing resources
+- the efficiency of searching and sorting algorithms is related to the number of items being processed
 
+
+##Searching
+
+- Need to look at every single item in the list to make sure that the item is / is not in the list
+      * *if the list is unsorted*
+
+####Binary Search
+- takes a sorted list and starts by examining the middle item, the ordered nature of the list allows us to eliminate half of the items
+- to find the item x in a list with n elements using binary search:
+      1. Compare x with the middle element
+      2. If x matches the middle element, return true
+      3. If x is greater than the middle element then x can only be in right half of subarray after the middle element. So we recur for right half
+      4. If x is smaller, recur for the left half.
+
+#####Divide-and-Conquer Paradigm
+- A problem that we want to solve may be too big to understand or solve at once
+- 
