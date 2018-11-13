@@ -1492,4 +1492,20 @@ before the addition
 
 #####Divide-and-Conquer Paradigm
 - A problem that we want to solve may be too big to understand or solve at once
-- 
+- TODO: Go back and get these notes, quick sort, merge sort, insertion sort etc.
+
+
+-------
+#Analysis of Algorithms
+How good are we at doing computers? How do we know?
+
+   - We have to be concerned about the resources consumed by the program
+      + Time
+      + Memory
+   - These are totally different resources
+   - We could choose a program with limited memory that runs slowly, or one that takes loads of memory and finishes quickly
+   - Algorithm analysis does not answer the question of how much of a resource is consumed to process n pieces of data
+      - it cares more about the growth rate of the resource consumption with respect to the data size
+         - **Worst Case** - max number of steps taken on any instance of size n
+         - **Best Case** - minimum umber of steps taken on any instance of size n
+         - **Average Case** - an average number of steps taken on any instance of size n 

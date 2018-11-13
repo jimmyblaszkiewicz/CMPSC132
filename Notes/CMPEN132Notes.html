@@ -2762,4 +2762,55 @@ before the addition</p>
 </li>
 </ul>
 <hr />
-<h1 id="searching-and-sorting-algorithms">Searching and Sorting Algorithms<a class="headerlink" href="#searching-and-sorting-algorithms" title="Permanent link"></a></h1></article></body></html>
+<h1 id="searching-and-sorting-algorithms">Searching and Sorting Algorithms<a class="headerlink" href="#searching-and-sorting-algorithms" title="Permanent link"></a></h1>
+<ul>
+<li>Searching is the algorithmic process of finding a particular item in a collection of items</li>
+<li>A search typically answers <code>True</code> or <code>False</code> as to whether the item is present and sometimes it may be modified to return where the item is found</li>
+<li>sorting is the process of placing elements from a collection in some kind of order</li>
+<li>sorting a large number of items can take a substantial amount of computing resources</li>
+<li>the efficiency of searching and sorting algorithms is related to the number of items being processed</li>
+</ul>
+<h2 id="searching">Searching<a class="headerlink" href="#searching" title="Permanent link"></a></h2>
+<ul>
+<li>Need to look at every single item in the list to make sure that the item is / is not in the list<ul>
+<li><em>if the list is unsorted</em></li>
+</ul>
+</li>
+</ul>
+<h4 id="binary-search">Binary Search<a class="headerlink" href="#binary-search" title="Permanent link"></a></h4>
+<ul>
+<li>takes a sorted list and starts by examining the middle item, the ordered nature of the list allows us to eliminate half of the items</li>
+<li>to find the item x in a list with n elements using binary search:<ol>
+<li>Compare x with the middle element</li>
+<li>If x matches the middle element, return true</li>
+<li>If x is greater than the middle element then x can only be in right half of subarray after the middle element. So we recur for right half</li>
+<li>If x is smaller, recur for the left half.</li>
+</ol>
+</li>
+</ul>
+<h5 id="divide-and-conquer-paradigm">Divide-and-Conquer Paradigm<a class="headerlink" href="#divide-and-conquer-paradigm" title="Permanent link"></a></h5>
+<ul>
+<li>A problem that we want to solve may be too big to understand or solve at once</li>
+<li>TODO: Go back and get these notes, quick sort, merge sort, insertion sort etc.</li>
+</ul>
+<hr />
+<h1 id="analysis-of-algorithms">Analysis of Algorithms<a class="headerlink" href="#analysis-of-algorithms" title="Permanent link"></a></h1>
+<p>How good are we at doing computers? How do we know?</p>
+<ul>
+<li>We have to be concerned about the resources consumed by the program<ul>
+<li>Time</li>
+<li>Memory</li>
+</ul>
+</li>
+<li>These are totally different resources</li>
+<li>We could choose a program with limited memory that runs slowly, or one that takes loads of memory and finishes quickly</li>
+<li>Algorithm analysis does not answer the question of how much of a resource is consumed to process n pieces of data<ul>
+<li>it cares more about the growth rate of the resource consumption with respect to the data size<ul>
+<li><strong>Worst Case</strong> - max number of steps taken on any instance of size n</li>
+<li><strong>Best Case</strong> - minimum umber of steps taken on any instance of size n</li>
+<li><strong>Average Case</strong> - an average number of steps taken on any instance of size n </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></article></body></html>
