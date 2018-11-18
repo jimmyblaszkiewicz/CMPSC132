@@ -1509,3 +1509,5 @@ How good are we at doing computers? How do we know?
          - **Worst Case** - max number of steps taken on any instance of size n
          - **Best Case** - minimum umber of steps taken on any instance of size n
          - **Average Case** - an average number of steps taken on any instance of size n 
+
+
