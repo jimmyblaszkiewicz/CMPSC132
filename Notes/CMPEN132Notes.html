@@ -2813,4 +2813,119 @@ before the addition</p>
 </li>
 </ul>
 </li>
-</ul></article></body></html>
+</ul>
+<hr />
+<h1 id="functional-programming">Functional Programming<a class="headerlink" href="#functional-programming" title="Permanent link"></a></h1>
+<ul>
+<li>Functions can be manipulated as values in python</li>
+<li>
+<p>Higher-order function takes a function as an argument or returns a function</p>
+</li>
+<li>
+<p>Functions are a method of abstraction to define our processes</p>
+</li>
+<li>In functional programming: Functions take input and produce output, witout any side effects</li>
+<li>Functions that manipulate functions are called higher-order functions</li>
+</ul>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">fac</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+   <span class="n">total</span> <span class="o">=</span> <span class="mi">1</span>
+   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+      <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+   <span class="k">return</span> <span class="n">total</span>
+
+<span class="c1"># recursive factorial is functional programming</span>
+<span class="k">def</span> <span class="nf">rec_fac</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+   <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">return</span> <span class="mi">1</span>
+   <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">fac</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+<h3 id="lambda-expressions">Lambda Expressions<a class="headerlink" href="#lambda-expressions" title="Permanent link"></a></h3>
+<ul>
+<li>Lambda expressions are anonymous functions that are usually passed as parameters to other functions</li>
+<li>General syntax:
+<code>**lambda** argument_list: expression</code></li>
+<li>Can have only one line of code and automatically return the computed value, so they do not need the return statement</li>
+</ul>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
+
+<span class="c1"># these are equivalent, but for &#39;python good practice&#39; use def</span>
+<span class="nb">sum</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
+</pre></div>
+
+<h3 id="map-function">Map Function<a class="headerlink" href="#map-function" title="Permanent link"></a></h3>
+<p><code>map()</code> takes a function and a collection of items and makes a new, empty collection, runs the function on each item in the original collection and inserts each return value into the new collection. Then it returns the new collection. </p>
+<ul>
+<li>Used like: <code>map(function_to_apply, list_of_inputs)</code></li>
+</ul>
+<div class="codehilite"><pre><span class="n">name_lengths</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;alex&#39;</span><span class="p">,</span> <span class="s">&#39;sandy&#39;</span><span class="p">,</span> <span class="s">&#39;jeffrey&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">name_lengths</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+</pre></div>
+
+<div class="codehilite"><pre><span class="n">squares</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">squares</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+</pre></div>
+
+<h3 id="filter">Filter<a class="headerlink" href="#filter" title="Permanent link"></a></h3>
+<p><code>filter()</code> offers an elegant way to filter out all the elements of a sequence for which a function returns True:</p>
+<ul>
+<li>
+<p>Used like: <code>filter(function_to_apply, list_of_inputs)</code></p>
+</li>
+<li>
+<p>The function_to_apply has to return a Boolean value and will be applied to every element of the list</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span class="n">number_list</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">less_than_zero</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">number_list</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">less_than_zero</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">...</span> <span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+<h3 id="reduce">Reduce<a class="headerlink" href="#reduce" title="Permanent link"></a></h3>
+<p><code>reduce()</code> performs computation on a list and returns the result. While map applies a function over a sequence, producing a sequence as an output, reduce applies a function of two arguments cumulatively to the items in a sequence, in order to reduce the sequence to a single value.</p>
+<ul>
+<li>Used like: <code>reduce(function_to_apply, list_of_inputs</code></li>
+</ul>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>
+<span class="n">product</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">((</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">),</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">product</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">120</span>
+</pre></div>
+
+<h3 id="list-comprehension">List Comprehension<a class="headerlink" href="#list-comprehension" title="Permanent link"></a></h3>
+<p>The basic syntax for list comprehension is:
+<code>[*expression* **for** *item* **in** **list** *if conditional*]</code></p>
+<p>This is equivalent to:
+<div class="codehilite"><pre><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
+   <span class="k">if</span> <span class="n">conditional</span><span class="p">:</span>
+      <span class="n">expression</span>
+</pre></div></p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="o">...</span>   <span class="n">squares</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">81</span><span class="p">]</span>
+
+<span class="c1"># or</span>
+<span class="n">squares</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+<span class="c1"># or again</span>
+<span class="n">squares</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+<h4 id="what-you-want-vs-how-to-do">What you want vs How to do<a class="headerlink" href="#what-you-want-vs-how-to-do" title="Permanent link"></a></h4>
+<div class="codehilite"><pre><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+   <span class="n">total</span><span class="o">+=</span> <span class="n">number</span>
+<span class="k">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">numbers</span><span class="p">))</span>
+</pre></div></article></body></html>

@@ -1511,3 +1511,123 @@ How good are we at doing computers? How do we know?
          - **Average Case** - an average number of steps taken on any instance of size n 
 
 
+-------------
+
+# Functional Programming
+- Functions can be manipulated as values in python
+- Higher-order function takes a function as an argument or returns a function
+
+- Functions are a method of abstraction to define our processes
+- In functional programming: Functions take input and produce output, witout any side effects
+- Functions that manipulate functions are called higher-order functions
+
+```python
+def fac(n):
+   total = 1
+   for i in range(n):
+      total = total * (i+1)
+   return total
+
+# recursive factorial is functional programming
+def rec_fac(n):
+   if n == 0:
+      return 1
+   else:
+      return n * fac(n-1)
+```
+
+###Lambda Expressions
+- Lambda expressions are anonymous functions that are usually passed as parameters to other functions
+- General syntax:
+`**lambda** argument_list: expression`
+- Can have only one line of code and automatically return the computed value, so they do not need the return statement
+
+```python
+def sum(x,y):
+   return x+y
+
+# these are equivalent, but for 'python good practice' use def
+sum = lambda x,y : x+y
+```
+
+###Map Function
+`map()` takes a function and a collection of items and makes a new, empty collection, runs the function on each item in the original collection and inserts each return value into the new collection. Then it returns the new collection. 
+
+- Used like: `map(function_to_apply, list_of_inputs)`
+
+```python
+name_lengths = map(len, ['alex', 'sandy', 'jeffrey'])
+print(list(name_lengths))
+>>> [4, 5, 7]
+```
+
+```python
+squares = map(lambda x: x*x, [0, 1, 2, 3, 4, 5])
+print(list(squares))
+>>> [0, 1, 4, 9, 16, 25]
+```
+
+###Filter
+`filter()` offers an elegant way to filter out all the elements of a sequence for which a function returns True:
+
+- Used like: `filter(function_to_apply, list_of_inputs)`
+
+- The function_to_apply has to return a Boolean value and will be applied to every element of the list
+
+```python
+number_list = range(-10, 5)
+less_than_zero = filter(lambda x: x < 0, number_list)
+print(list(less_than_zero))
+>>> [-10, -9, -8, ... , -1]
+```
+
+###Reduce
+`reduce()` performs computation on a list and returns the result. While map applies a function over a sequence, producing a sequence as an output, reduce applies a function of two arguments cumulatively to the items in a sequence, in order to reduce the sequence to a single value.
+
+- Used like: `reduce(function_to_apply, list_of_inputs`
+
+```python
+from functools import reduce
+product = reduce((lambda x,y: x*y), [1,2,3,4,5])
+print(product)
+>>> 120
+```
+
+###List Comprehension
+The basic syntax for list comprehension is:
+`[*expression* **for** *item* **in** **list** *if conditional*]`
+
+This is equivalent to:
+```python
+for item in list:
+   if conditional:
+      expression
+```
+
+```python
+>>> squares = []
+>>> for x in range(10):
+...   squares.append(x**2)
+...
+>>> squares
+[0, 1, 4, 16, 25, 36, 49, 64, 81]
+
+# or
+squares = list(map(lambda x: x**2, range(10)))
+# or again
+squares = x**2 for i in range(10)
+```
+
+####What you want vs How to do
+
+```python
+numbers = [1,2,3,4,5]
+total = 0
+for number in numbers:
+   total+= number
+print(total)
+
+from functools import reduce
+numbers = [1,2,3,4,5]
+print(reduce(lambda x, y: x+ y, numbers))
+```
