@@ -316,9 +316,16 @@ class Graph:
             for i in self.vertList[vertex]:
                 # check if the edge is weighted at all
                 if type(i) != tuple:
-                    return 'error: i dont know what to do if the graph is not weighted' 
+                    if i not in visited:
+                        visited.append(i)
+                        q.enqueue(i)
+                    # treat unweighted edges as weight 1
+                    if paths[i] > paths[vertex] + 1:
+                        paths[i] = paths[vertex] + 1            
 
-                
+                    # dont execute the code for tuples down below
+                    continue
+
                 # if the node has not appeared yet in visited
                 if i[0] not in visited:
                     # enqueue the new neighbor and append to visited
@@ -331,28 +338,3 @@ class Graph:
                     paths[i[0]] = paths[vertex] + i[1]
 
         return paths
-
-
-if __name__ == '__main__':
-    # g1 = {'A': ['B','D','G'], 'B': ['A','E','F'], 'C': ['F'], 'D': ['A','F'], 'E': ['B','G'], 'F': ['B','C','D'], 'G': ['A','E']}
-    # graph1 = Graph(g1)
-    # print (graph1.dfs('A'))
-    # print (['A', 'B', 'E', 'G', 'F', 'C', 'D'])
-
-    # # # should be the same BFS and DFS as G1, just given in non alphabetical order
-    # g2 = {'F': ['D','C','B'], 'A': ['G','D','B'], 'B': ['F','A','E'], 'E': ['G','B'], 'C': ['F'], 'D': ['F','A'], 'G': ['A','E'], 'F': ['D','C','B']}
-    # graph2 = Graph(g2)
-    # print(graph2.dfs('A'))
-
-    # # weighted graph
-    g3 = {'B': [('E',3),('C',5)], 'F': [], 'C': [('F',2)], 'A': [('D',3),('B',2),], 'D': [('C',1)], 'E': [('F',4)]}
-    graph3 = Graph(g3)
-    # print(graph3.dfs('A'))
-    # print(['A', 'B', 'C', 'F', 'E', 'D'])
-
-    # dijkstra
-    print(graph3.dijkstra('A'))
-
-    print({'A': 0, 'B': 2, 'C': 4, 'D': 3, 'E': 5, 'F': 6})
-
-    
